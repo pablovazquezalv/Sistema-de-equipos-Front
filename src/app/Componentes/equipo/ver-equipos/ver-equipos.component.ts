@@ -22,4 +22,9 @@ export class VerEquiposComponent {
     this.router.navigate(['equipo/crear'])
   }
 
+  editarEquipo()
+  {
+    this.router.navigate(['equipo/editar'])
+  }
+
 }

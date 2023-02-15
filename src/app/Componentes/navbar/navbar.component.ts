@@ -28,7 +28,7 @@ export class NavbarComponent {
     this.router.navigate(['sign-up'])
   }
   
-  jugadores()
+  equipo()
   {
     this.router.navigate(['equipo/ver'])
   }
