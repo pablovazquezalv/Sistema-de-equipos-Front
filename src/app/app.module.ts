@@ -12,6 +12,7 @@ import { VerEquiposComponent } from './Componentes/equipo/ver-equipos/ver-equipo
 import { FormularioEditarComponent } from './Componentes/equipo/formulario-editar/formulario-editar.component';
 import { VerJugadoresComponent } from './Componentes/jugadores/ver-jugadores/ver-jugadores.component';
 import { HttpClientModule} from '@angular/common/http';
+import { VerEstadosComponent } from './Componentes/estado/ver-estados/ver-estados.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,8 @@ import { HttpClientModule} from '@angular/common/http';
     FormularioCrearComponent,
     VerEquiposComponent,
     FormularioEditarComponent,
-    VerJugadoresComponent
+    VerJugadoresComponent,
+    VerEstadosComponent
   ],
   imports: [
     BrowserModule,

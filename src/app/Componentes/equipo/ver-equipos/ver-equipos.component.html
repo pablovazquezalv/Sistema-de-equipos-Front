@@ -29,18 +29,18 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-gray-600 border-b border-green-400 ">
+                <tr class="bg-gray-600 border-b border-green-400 " *ngFor="let equipo of equipos">
                     <th scope="row" class="px-6 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">
-                        01
+                        {{equipo.id}}
                     </th>
                     <td class="px-6 py-4">
-                        Santos Laguna
+                        {{equipo.nombre}}
                     </td>
                     <td class="px-6 py-4">
-                        Coahuila
+                        {{equipo.estado}}
                     </td>
                     <td class="px-6 py-4">
-                        Alejandro Ilarragorri
+                        {{equipo.propietario}}
                     </td>
                     <td class="px-6 py-4">
                         <a (click)="editarEquipo()" class="font-medium text-white hover:underline">Editar</a>
