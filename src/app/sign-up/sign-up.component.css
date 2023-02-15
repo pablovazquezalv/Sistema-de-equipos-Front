@@ -1,0 +1,4 @@
+.imagen{background-color: #f6f6f6;
+opacity: 1;
+background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #f6f6f6 23px ), repeating-linear-gradient( #0aad2055, #0aad20 );
+}

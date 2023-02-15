@@ -1,0 +1,5 @@
+.imagen{
+    background-color: #f6f6f6;
+opacity: 1;
+background: linear-gradient(135deg, #0aad2055 25%, transparent 25%) -23px 0/ 46px 46px, linear-gradient(225deg, #0aad20 25%, transparent 25%) -23px 0/ 46px 46px, linear-gradient(315deg, #0aad2055 25%, transparent 25%) 0px 0/ 46px 46px, linear-gradient(45deg, #0aad20 25%, #f6f6f6 25%) 0px 0/ 46px 46px;
+}
