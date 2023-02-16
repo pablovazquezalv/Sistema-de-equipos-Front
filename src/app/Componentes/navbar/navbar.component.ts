@@ -33,4 +33,16 @@ export class NavbarComponent {
     this.router.navigate(['equipo/ver'])
   }
 
+  jugadores()
+  {
+    this.router.navigate(['jugadores/ver'])
+  }
+  estados()
+  {
+    this.router.navigate(['estados/ver'])
+  }
+  propietario()
+  {
+    this.router.navigate(['propietario/ver'])
+  }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ver-estados',
@@ -7,4 +8,18 @@ import { Component } from '@angular/core';
 })
 export class VerEstadosComponent {
 
+  constructor(private router:Router){ }
+  ngOnInit()
+  {
+   
+  }
+  crearEstado()
+  {
+    this.router.navigate(['estados/crear'])
+  }
+
+  editarEstado()
+  {
+    this.router.navigate(['estados/editar'])
+  }
 }

@@ -13,6 +13,7 @@ import { FormularioEditarComponent } from './Componentes/equipo/formulario-edita
 import { VerJugadoresComponent } from './Componentes/jugadores/ver-jugadores/ver-jugadores.component';
 import { HttpClientModule} from '@angular/common/http';
 import { VerEstadosComponent } from './Componentes/estado/ver-estados/ver-estados.component';
+import { VerPropietariosComponent } from './Componentes/propietario/ver-propietarios/ver-propietarios.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import { VerEstadosComponent } from './Componentes/estado/ver-estados/ver-estado
     VerEquiposComponent,
     FormularioEditarComponent,
     VerJugadoresComponent,
-    VerEstadosComponent
+    VerEstadosComponent,
+    VerPropietariosComponent
   ],
   imports: [
     BrowserModule,

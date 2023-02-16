@@ -1,10 +1,12 @@
 
-<h3 class="text-4xl font-light text-green-700 pt-5 pl-10">Equipos</h3>
+
+<h3 class="text-4xl font-light text-green-700 pt-5 pl-10">Propietarios</h3>
 <div class="flex flex-row">
     <div class="basis-1/4 pt-5 pl-5" >
-        <button type="button"  (click)="crearEquipo()" class="focus:outline-none text-white bg-gray-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">Crear Equipo</button>
+        <button type="button" (click)="crearPropietario()" class="focus:outline-none text-white bg-gray-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">Crear Equipo</button>
 
     </div>
+    
     <div class="basis-1/2 pt-5 "><div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table class="w-full text-sm text-left text-blue-100 dark:text-blue-100">
             <thead class="text-xs text-black uppercase bg-green-200 ">
@@ -16,10 +18,16 @@
                         Nombre
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Estado
+                        Apellido Paterno
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Propetario
+                        Apellido Materno
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Sexo
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        F.Nacimiento
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Acciones
@@ -29,21 +37,28 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-gray-600 border-b border-green-400 " *ngFor="let equipo of equipos">
+                <tr class="bg-gray-600 border-b border-green-400 " >
                     <th scope="row" class="px-6 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">
-                        {{equipo.id}}
+                        1
                     </th>
                     <td class="px-6 py-4">
-                        {{equipo.nombre}}
+                        Carlos
                     </td>
                     <td class="px-6 py-4">
-                        {{equipo.estado}}
+                        Slim
                     </td>
                     <td class="px-6 py-4">
-                        {{equipo.propietario}}
+                        Nazarenas
                     </td>
                     <td class="px-6 py-4">
-                        <a (click)="editarEquipo()" class="font-medium text-white hover:underline">Editar</a>
+                        Masculino
+                    </td>
+                    <td class="px-6 py-4">
+                        20/03/1976
+                    </td>
+                    
+                    <td class="px-6 py-4">
+                        <a  (click)="editarPropietario()" class="font-medium text-white hover:underline">Editar</a>
                     </td>
                     <td>
                         <a href="#" class="font-medium text-white hover:underline">Eliminar</a>
