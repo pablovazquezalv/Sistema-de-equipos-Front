@@ -22,8 +22,8 @@ export class VerEquiposComponent implements OnInit{
   
 
   getEquipos() {
-    this.equipoService.getEquipos()
-   .subscribe(data => this.equipos = data);
+    this.equipoService.getEquipos().subscribe(data => this.equipos = data);
+    
   }
 
   crearEquipo()
