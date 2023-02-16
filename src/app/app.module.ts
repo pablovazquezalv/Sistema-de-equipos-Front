@@ -12,6 +12,8 @@ import { VerEquiposComponent } from './Componentes/equipo/ver-equipos/ver-equipo
 import { FormularioEditarComponent } from './Componentes/equipo/formulario-editar/formulario-editar.component';
 import { VerJugadoresComponent } from './Componentes/jugadores/ver-jugadores/ver-jugadores.component';
 import { HttpClientModule} from '@angular/common/http';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+
 import { VerEstadosComponent } from './Componentes/estado/ver-estados/ver-estados.component';
 import { VerPropietariosComponent } from './Componentes/propietario/ver-propietarios/ver-propietarios.component';
 @NgModule({
@@ -31,7 +33,9 @@ import { VerPropietariosComponent } from './Componentes/propietario/ver-propieta
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
