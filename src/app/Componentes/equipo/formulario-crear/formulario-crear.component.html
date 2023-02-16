@@ -4,26 +4,26 @@
     </div>
     <div class="basis-1/4">
     <h3 class="text-4xl font-light text-green-700 pt-5 pl-10">Crear Equipo!</h3>
-   <form class="pt-5 pl-10">
+   <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="pt-5 pl-10">
     <div class="mb-6"> 
       <label for="Nombre" class="block mb-2 text-md font-light text-gray-900">Nombre</label>
-      <input type="text" id="Nombre" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="Jose Angel " required>
+      <input type="text" formControlName="nombre" id="Nombre" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="Jose Angel " required>
     </div>
     <div class="mb-6"> 
         <label for="division" class="block mb-2 text-md font-light text-gray-900">Division</label>
-        <input type="text" id="division" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="" required>
+        <input formControlName="division" type="text" id="division" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="" required>
       </div>
     <div class="mb-6"> 
         <label for="campeonatos" class="block mb-2 text-md font-light text-gray-900">Campeonatos </label>
-        <input type="tel" id="campeonatos" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="87174949" required>
+        <input type="tel" formControlName="campeonatos" id="campeonatos" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="87174949" required>
       </div>
     <div class="mb-6"> 
         <label for="estado" class="block mb-2 text-md font-light text-gray-900">Estado </label>
-        <input type="text" id="estado" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="" required>
+        <input  formControlName="estado" value="1" type="text" id="estado" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="" required>
       </div>
       <div class="mb-6"> 
         <label for="Propetario" class="block mb-2 text-md font-light text-gray-900">Propetario </label>
-        <input type="text" id="Propetario" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="" required>
+        <input type="text" formControlName="propietario" value="1" id="Propetario" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="" required>
       </div>
     
      

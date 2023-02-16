@@ -2,39 +2,38 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpErrorResponse } from '@angular/common/http';
 import { Observable,throwError } from 'rxjs';
 import { catchError,retry } from 'rxjs/operators';
-import { Equipo } from '../Interfaces/equipo.interface';
+import { Estado } from '../Interfaces/estado.interface';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EquipoService 
-{
+export class EstadoService {
 
-  private equipo_url =environment.urlapi+'/equipos';
+  private estados_url =environment.urlapi+'/estados';
   
 
   constructor(private http:HttpClient) 
   {
     
-   }
+  }
 
-getEquipos(): Observable<Equipo[]> 
+  getEstados(): Observable<Estado[]> 
 {
-  return this.http.get<Equipo[]>(this.equipo_url)
+  return this.http.get<Estado[]>(this.estados_url)
   .pipe(
     retry(3),
     catchError(this.handleError)
   );
 }
-
-addEquipo(equipo: Equipo):Observable<Equipo>
+addEstado(estado: Estado):Observable<Estado>
 {
-  return this.http.post<Equipo>(this.equipo_url,equipo)
+  return this.http.post<Estado>(this.estados_url,estado)
   .pipe(
     catchError(this.handleError)
   );
 }
+
 private handleError(error: HttpErrorResponse)
 {
   if (error.status === 0) {

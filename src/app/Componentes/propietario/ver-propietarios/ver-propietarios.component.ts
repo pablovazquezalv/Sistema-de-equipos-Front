@@ -1,21 +1,35 @@
-import { Component } from '@angular/core';
+import { Component,Injectable } from '@angular/core';
+import { FormBuilder, FormGroup , Validators} from '@angular/forms';
+import { Propietario } from 'src/app/Interfaces/propietario.interface';
+import { PropietarioService } from 'src/app/Services/propietario.service';
 import { Router } from '@angular/router';
+import { OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-ver-propietarios',
   templateUrl: './ver-propietarios.component.html',
   styleUrls: ['./ver-propietarios.component.css']
 })
-export class VerPropietariosComponent {
+@Injectable()
+export class VerPropietariosComponent implements OnInit {
 
-  constructor(private router:Router)
-  {
-    
-  }
+  propietarios: Propietario[] = [];
+
+
+  constructor(private propietarioService: PropietarioService,private router:Router){ }
+  
   ngOnInit()
   {
-     
+    this.getPropietarios();
   }
+  
+
+  getPropietarios() {
+    this.propietarioService.getPropietarios().subscribe(data => this.propietarios = data);
+    
+  }
+
 
   crearPropietario()
   {

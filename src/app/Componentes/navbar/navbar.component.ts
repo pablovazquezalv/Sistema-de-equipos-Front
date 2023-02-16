@@ -45,4 +45,8 @@ export class NavbarComponent {
   {
     this.router.navigate(['propietario/ver'])
   }
+  partidos()
+  {
+    this.router.navigate(['partidos/ver'])
+  }
 }

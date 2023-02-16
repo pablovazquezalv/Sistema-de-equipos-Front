@@ -2,39 +2,40 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpErrorResponse } from '@angular/common/http';
 import { Observable,throwError } from 'rxjs';
 import { catchError,retry } from 'rxjs/operators';
-import { Equipo } from '../Interfaces/equipo.interface';
+import { Jugador } from '../Interfaces/jugador.interface';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EquipoService 
-{
+export class JugadorService {
 
-  private equipo_url =environment.urlapi+'/equipos';
+  
+  private jugadores_url =environment.urlapi+'/jugadores';
   
 
   constructor(private http:HttpClient) 
   {
     
-   }
+  }
 
-getEquipos(): Observable<Equipo[]> 
+  getJugadores(): Observable<Jugador[]> 
 {
-  return this.http.get<Equipo[]>(this.equipo_url)
+  return this.http.get<Jugador[]>(this.jugadores_url)
   .pipe(
     retry(3),
     catchError(this.handleError)
   );
 }
 
-addEquipo(equipo: Equipo):Observable<Equipo>
+addJugador(jugador: Jugador):Observable<Jugador>
 {
-  return this.http.post<Equipo>(this.equipo_url,equipo)
+  return this.http.post<Jugador>(this.jugadores_url,jugador)
   .pipe(
     catchError(this.handleError)
   );
 }
+
 private handleError(error: HttpErrorResponse)
 {
   if (error.status === 0) {
@@ -49,5 +50,4 @@ private handleError(error: HttpErrorResponse)
   // Return an observable with a user-facing error message.
   return throwError(() => new Error('Something bad happened; please try again later.'));
 }
-
 }

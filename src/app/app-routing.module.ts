@@ -20,6 +20,10 @@ import { FormularioEditarComponent as FormularioEditarEstado } from './Component
 import { FormularioCrearComponent as FormularioPropietario} from './Componentes/propietario/formulario-crear/formulario-crear.component';
 import { VerPropietariosComponent } from './Componentes/propietario/ver-propietarios/ver-propietarios.component';
 import { FormularioEditarComponent as FormularioEditarPropietario } from './Componentes/propietario/formulario-editar/formulario-editar.component';
+//Partidos
+import { FormularioCrearPartidoComponent } from './Componentes/partidos/formulario-crear-partido/formulario-crear-partido.component';
+import { VerPartidosComponent } from './Componentes/partidos/ver-partidos/ver-partidos.component';
+import { FormularioEditarPartidoComponent } from './Componentes/partidos/formulario-editar-partido/formulario-editar-partido.component';
 const routes: Routes = [
 //Login
   { path:'login',component:LoginComponent},
@@ -38,10 +42,13 @@ const routes: Routes = [
 {path:'estados/crear',component:FormularioEstado},
 {path:'estados/editar',component:FormularioEditarEstado},
 //Propietarios
-
 { path:'propietario/ver',component:VerPropietariosComponent},
 {path:'propietario/crear',component:FormularioPropietario},
-{path:'propietario/editar',component:FormularioEditarPropietario}
+{path:'propietario/editar',component:FormularioEditarPropietario},
+//Partidos
+{ path:'partidos/ver',component:VerPartidosComponent},
+{path:'partidos/crear',component:FormularioCrearPartidoComponent},
+{path:'partidos/editar',component:FormularioEditarPartidoComponent}
 ];
 
 

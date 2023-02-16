@@ -2,16 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpErrorResponse } from '@angular/common/http';
 import { Observable,throwError } from 'rxjs';
 import { catchError,retry } from 'rxjs/operators';
-import { Equipo } from '../Interfaces/equipo.interface';
+import { Propietario } from '../Interfaces/propietario.interface';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EquipoService 
-{
-
-  private equipo_url =environment.urlapi+'/equipos';
+export class PropietarioService {
+  private propietario_url =environment.urlapi+'/propietarios';
   
 
   constructor(private http:HttpClient) 
@@ -19,18 +17,18 @@ export class EquipoService
     
    }
 
-getEquipos(): Observable<Equipo[]> 
+getPropietarios(): Observable<Propietario[]> 
 {
-  return this.http.get<Equipo[]>(this.equipo_url)
+  return this.http.get<Propietario[]>(this.propietario_url)
   .pipe(
     retry(3),
     catchError(this.handleError)
   );
 }
 
-addEquipo(equipo: Equipo):Observable<Equipo>
+addPropietario(propietario: Propietario):Observable<Propietario>
 {
-  return this.http.post<Equipo>(this.equipo_url,equipo)
+  return this.http.post<Propietario>(this.propietario_url,propietario)
   .pipe(
     catchError(this.handleError)
   );
@@ -49,5 +47,4 @@ private handleError(error: HttpErrorResponse)
   // Return an observable with a user-facing error message.
   return throwError(() => new Error('Something bad happened; please try again later.'));
 }
-
 }

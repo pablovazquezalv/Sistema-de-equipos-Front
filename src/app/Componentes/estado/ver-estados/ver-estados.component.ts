@@ -1,18 +1,31 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Estado } from 'src/app/Interfaces/estado.interface';
+import { EstadoService } from 'src/app/Services/estado.service';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-ver-estados',
   templateUrl: './ver-estados.component.html',
   styleUrls: ['./ver-estados.component.css']
 })
-export class VerEstadosComponent {
+export class VerEstadosComponent implements OnInit{
 
-  constructor(private router:Router){ }
+  estados: Estado[] = [];
+
+
+  constructor(private estadoService: EstadoService,private router:Router){ }
+  
   ngOnInit()
   {
-   
+    this.getEstados();
   }
+
+  getEstados() 
+  {
+    this.estadoService.getEstados().subscribe(data => this.estados = data);  
+  }
+  
   crearEstado()
   {
     this.router.navigate(['estados/crear'])

@@ -37,24 +37,24 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-gray-600 border-b border-green-400 " >
+                <tr class="bg-gray-600 border-b border-green-400 " *ngFor="let propietario of propietarios" >
                     <th scope="row" class="px-6 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">
-                        1
+                        {{propietario.id}}
                     </th>
                     <td class="px-6 py-4">
-                        Carlos
+                        {{propietario.nombre}}
                     </td>
                     <td class="px-6 py-4">
-                        Slim
+                        {{propietario.ap_paterno}}
                     </td>
                     <td class="px-6 py-4">
-                        Nazarenas
+                        {{propietario.ap_materno}}
                     </td>
                     <td class="px-6 py-4">
-                        Masculino
+                        {{propietario.sexo}}
                     </td>
                     <td class="px-6 py-4">
-                        20/03/1976
+                        {{propietario.f_nac}}
                     </td>
                     
                     <td class="px-6 py-4">

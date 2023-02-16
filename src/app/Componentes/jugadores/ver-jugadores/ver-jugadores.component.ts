@@ -1,17 +1,25 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Jugador } from 'src/app/Interfaces/jugador.interface';
+import { JugadorService } from 'src/app/Services/jugador.service';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-ver-jugadores',
   templateUrl: './ver-jugadores.component.html',
   styleUrls: ['./ver-jugadores.component.css']
 })
-export class VerJugadoresComponent {
-  
-  constructor(private router:Router){ }
+export class VerJugadoresComponent implements OnInit{
+  jugadores: Jugador[] = [];
+  constructor(private jugadorService: JugadorService,private router:Router){ }
   ngOnInit()
   {
-   
+    this.getJugadores();
+  }
+
+  getJugadores()
+   {
+    this.jugadorService.getJugadores().subscribe(data => this.jugadores = data);  
   }
   crearJugador()
   {
