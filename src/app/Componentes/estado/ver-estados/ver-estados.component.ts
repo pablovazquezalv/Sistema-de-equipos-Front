@@ -31,9 +31,9 @@ export class VerEstadosComponent implements OnInit{
     this.router.navigate(['estados/crear'])
   }
 
-  editarEstado()
+  editarEstado(id: number)
   {
-    this.router.navigate(['estados/editar'])
+    this.router.navigate(['estados/editar',id])
   }
 
    deleteEstado(id: number)

@@ -31,9 +31,9 @@ export class VerEquiposComponent implements OnInit{
     this.router.navigate(['equipo/crear'])
   }
 
-  editarEquipo()
+  editarEquipo(id: number)
   {
-    this.router.navigate(['equipo/editar'])
+    this.router.navigate(['equipo/editar',id])
   }
 
 }

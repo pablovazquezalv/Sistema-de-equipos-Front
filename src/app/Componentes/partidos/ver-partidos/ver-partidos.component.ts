@@ -27,9 +27,9 @@ export class VerPartidosComponent implements OnInit{
     this.router.navigate(['partidos/crear'])
   }
 
-  editarPartido()
+  editarPartido(id: number)
   {
-    this.router.navigate(['partidos/editar'])
+    this.router.navigate(['partidos/editar',id])
   }
 
 }

@@ -35,6 +35,15 @@ addJugador(jugador: Jugador):Observable<Jugador>
     catchError(this.handleError)
   );
 }
+actualizarJugador(jugador: Jugador, id: number)
+ {
+  return this.http.put<Jugador>(this.jugadores_url + '/' + id, jugador).pipe(retry(3));
+}
+
+mostrarUnico(id: number)
+{
+  return this.http.get<Jugador>(this.jugadores_url + '/mostrar/' + id).pipe(retry(3));
+}
 
 private handleError(error: HttpErrorResponse)
 {

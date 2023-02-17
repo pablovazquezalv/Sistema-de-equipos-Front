@@ -34,8 +34,19 @@ addEstado(estado: Estado):Observable<Estado>
   );
 }
 
-eliminarEstado(id: number) {
+eliminarEstado(id: number)
+{
   return this.http.delete<Estado>(this.estados_url + '/' + id).pipe(retry(3));
+}
+
+actualizarEstado(estado: Estado, id: number)
+ {
+  return this.http.put<Estado>(this.estados_url + '/' + id, estado).pipe(retry(3));
+}
+
+mostrarUnico(id: number)
+{
+  return this.http.get<Estado>(this.estados_url + '/mostrar/' + id).pipe(retry(3));
 }
 
 private handleError(error: HttpErrorResponse)

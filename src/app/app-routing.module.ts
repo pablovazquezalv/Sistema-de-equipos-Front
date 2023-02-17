@@ -32,23 +32,23 @@ const routes: Routes = [
 //Equipo
 { path:'equipo/ver',component:VerEquiposComponent},
 {path:'equipo/crear',component:FormularioCrearComponent},
-{path:'equipo/editar',component:FormularioEditarComponent},
+{path:'equipo/editar/:id',component:FormularioEditarComponent},
 //Jugadores
 { path:'jugadores/ver',component:VerJugadoresComponent},
 {path:'jugadores/crear',component:FormularioJugador},
-{path:'jugadores/editar',component:FormularioEditarJugador},
+{path:'jugadores/editar/:id',component:FormularioEditarJugador},
 //Estados
 { path:'estados/ver',component:VerEstadosComponent},
 {path:'estados/crear',component:FormularioEstado},
-{path:'estados/editar',component:FormularioEditarEstado},
+{path:'estados/editar/:id',component:FormularioEditarEstado},
 //Propietarios
 { path:'propietario/ver',component:VerPropietariosComponent},
 {path:'propietario/crear',component:FormularioPropietario},
-{path:'propietario/editar',component:FormularioEditarPropietario},
+{path:'propietario/editar/:id',component:FormularioEditarPropietario},
 //Partidos
 { path:'partidos/ver',component:VerPartidosComponent},
 {path:'partidos/crear',component:FormularioCrearPartidoComponent},
-{path:'partidos/editar',component:FormularioEditarPartidoComponent}
+{path:'partidos/editar/:id',component:FormularioEditarPartidoComponent}
 ];
 
 

@@ -26,8 +26,8 @@ export class VerJugadoresComponent implements OnInit{
     this.router.navigate(['jugadores/crear'])
   }
 
-  editarJugador()
+  editarJugador(id: number)
   {
-    this.router.navigate(['jugadores/editar'])
+    this.router.navigate(['jugadores/editar',id])
   }
 }

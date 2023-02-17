@@ -32,6 +32,15 @@ addPartidos(partido: Partido):Observable<Partido>
     catchError(this.handleError)
   );
 }
+actualizarPartido(partido: Partido, id: number)
+ {
+  return this.http.put<Partido>(this.partidos_url + '/' + id, partido).pipe(retry(3));
+}
+
+mostrarUnico(id: number)
+{
+  return this.http.get<Partido>(this.partidos_url + '/mostrar/' + id).pipe(retry(3));
+}
 
 private handleError(error: HttpErrorResponse)
 {

@@ -4,10 +4,10 @@
     </div>
     <div class="basis-1/4">
     <h3 class="text-4xl font-light text-green-700 pt-5 pl-10">Editar Estado!</h3>
-   <form class="pt-5 pl-10">
+   <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="pt-5 pl-10">
     <div class="mb-6"> 
       <label for="Nombre" class="block mb-2 text-md font-light text-gray-900">Nuevo Nombre</label>
-      <input type="text" id="Nombre" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="Coahuila" required>
+      <input type="text"formControlName="nombre" id="Nombre" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="Coahuila" required>
     </div>  
     <button type="submit"  class="text-white bg-green-700 hover:bg-green-800 focus:ring-4  font-medium rounded-lg text-sm w-full sm:w-auto px-6 py-1.5 text-center">Crear Estado</button>
   </form>

@@ -35,6 +35,17 @@ addEquipo(equipo: Equipo):Observable<Equipo>
     catchError(this.handleError)
   );
 }
+actualizarEquipo(equipo: Equipo, id: number)
+ {
+  return this.http.put<Equipo>(this.equipo_url + '/' + id, equipo).pipe(retry(3));
+}
+
+mostrarUnico(id: number)
+{
+  return this.http.get<Equipo>(this.equipo_url + '/mostrar/' + id).pipe(retry(3));
+}
+
+
 private handleError(error: HttpErrorResponse)
 {
   if (error.status === 0) {

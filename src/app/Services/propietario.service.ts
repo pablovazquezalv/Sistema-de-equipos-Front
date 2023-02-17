@@ -33,6 +33,17 @@ addPropietario(propietario: Propietario):Observable<Propietario>
     catchError(this.handleError)
   );
 }
+
+actualizarPropietario(propietario: Propietario, id: number)
+ {
+  return this.http.put<Propietario>(this.propietario_url + '/' + id, propietario).pipe(retry(3));
+}
+
+mostrarUnico(id: number)
+{
+  return this.http.get<Propietario>(this.propietario_url + '/mostrar/' + id).pipe(retry(3));
+}
+
 private handleError(error: HttpErrorResponse)
 {
   if (error.status === 0) {

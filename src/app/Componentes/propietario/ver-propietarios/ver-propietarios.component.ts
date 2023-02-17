@@ -36,9 +36,9 @@ export class VerPropietariosComponent implements OnInit {
     this.router.navigate(['propietario/crear'])
   }
 
-  editarPropietario()
+  editarPropietario(id: number)
   {
-    this.router.navigate(['propietario/editar'])
+    this.router.navigate(['propietario/editar',id])
   }
 
 }
