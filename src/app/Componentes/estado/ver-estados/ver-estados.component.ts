@@ -13,7 +13,6 @@ export class VerEstadosComponent implements OnInit{
 
   estados: Estado[] = [];
 
-
   constructor(private estadoService: EstadoService,private router:Router){ }
   
   ngOnInit()
@@ -40,7 +39,7 @@ export class VerEstadosComponent implements OnInit{
   {
     if (confirm("¿Está seguro de eliminar la persona?"))
     {
-      this.estadoService.eliminarEstado(id).subscribe(response => location.reload());
+      this.estadoService.eliminarEstado(id).subscribe(response => {location.reload()}, error => console.log(error));
     }
   }
 }

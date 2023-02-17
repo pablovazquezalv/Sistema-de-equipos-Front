@@ -26,35 +26,38 @@ import { VerPartidosComponent } from './Componentes/partidos/ver-partidos/ver-pa
 import { FormularioEditarPartidoComponent } from './Componentes/partidos/formulario-editar-partido/formulario-editar-partido.component';
 
 const routes: Routes = [
-//Login
-{ path:'login',component:LoginComponent},
-{ path:'sign-up',component:SignUpComponent},
-{ path:'mobile-code',component:MobileCodeComponent},
+  //Default
+  { path:'',redirectTo:'equipo/ver',pathMatch:'full'},
 
-//Equipo
-{ path:'equipo/ver',component:VerEquiposComponent},
-{ path:'equipo/crear',component:FormularioCrearComponent},
-{ path:'equipo/editar/:id',component:FormularioEditarComponent},
+  //Login
+  { path:'login',component:LoginComponent},
+  { path:'sign-up',component:SignUpComponent},
+  { path:'mobile-code',component:MobileCodeComponent},
 
-//Jugadores
-{ path:'jugadores/ver',component:VerJugadoresComponent},
-{ path:'jugadores/crear',component:FormularioJugador},
-{ path:'jugadores/editar/:id',component:FormularioEditarJugador},
+  //Equipo
+  { path:'equipo/ver',component:VerEquiposComponent},
+  { path:'equipo/crear',component:FormularioCrearComponent},
+  { path:'equipo/editar/:id',component:FormularioEditarComponent},
 
-//Estados
-{ path:'estados/ver',component:VerEstadosComponent},
-{ path:'estados/crear',component:FormularioEstado},
-{ path:'estados/editar/:id',component:FormularioEditarEstado},
+  //Jugadores
+  { path:'jugadores/ver',component:VerJugadoresComponent},
+  { path:'jugadores/crear',component:FormularioJugador},
+  { path:'jugadores/editar/:id',component:FormularioEditarJugador},
 
-//Propietarios
-{ path:'propietario/ver',component:VerPropietariosComponent},
-{ path:'propietario/crear',component:FormularioPropietario},
-{ path:'propietario/editar/:id',component:FormularioEditarPropietario},
+  //Estados
+  { path:'estados/ver',component:VerEstadosComponent},
+  { path:'estados/crear',component:FormularioEstado},
+  { path:'estados/editar/:id',component:FormularioEditarEstado},
 
-//Partidos
-{ path:'partidos/ver',component:VerPartidosComponent},
-{ path:'partidos/crear',component:FormularioCrearPartidoComponent},
-{ path:'partidos/editar/:id',component:FormularioEditarPartidoComponent}
+  //Propietarios
+  { path:'propietario/ver',component:VerPropietariosComponent},
+  { path:'propietario/crear',component:FormularioPropietario},
+  { path:'propietario/editar/:id',component:FormularioEditarPropietario},
+
+  //Partidos
+  { path:'partidos/ver',component:VerPartidosComponent},
+  { path:'partidos/crear',component:FormularioCrearPartidoComponent},
+  { path:'partidos/editar/:id',component:FormularioEditarPartidoComponent}
 ];
 
 
