@@ -2,15 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpErrorResponse } from '@angular/common/http';
 import { Observable,throwError } from 'rxjs';
 import { catchError,retry } from 'rxjs/operators';
-import { Estado } from '../Interfaces/estado.interface';
+import { Partido } from '../Interfaces/partido.interface';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EstadoService {
-
-  private estados_url =environment.urlapi+'/estados';
+export class PartidoService {
+  private partidos_url =environment.urlapi+'/partidos';
   
 
   constructor(private http:HttpClient) 
@@ -18,24 +17,20 @@ export class EstadoService {
     
   }
 
-  getEstados(): Observable<Estado[]> 
+  getPartidos(): Observable<Partido[]> 
 {
-  return this.http.get<Estado[]>(this.estados_url)
+  return this.http.get<Partido[]>(this.partidos_url)
   .pipe(
     retry(3),
     catchError(this.handleError)
   );
 }
-addEstado(estado: Estado):Observable<Estado>
+addPartidos(partido: Partido):Observable<Partido>
 {
-  return this.http.post<Estado>(this.estados_url,estado)
+  return this.http.post<Partido>(this.partidos_url,partido)
   .pipe(
     catchError(this.handleError)
   );
-}
-
-eliminarEstado(id: number) {
-  return this.http.delete<Estado>(this.estados_url + '/' + id).pipe(retry(3));
 }
 
 private handleError(error: HttpErrorResponse)

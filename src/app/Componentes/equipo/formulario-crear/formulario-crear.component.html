@@ -11,19 +11,33 @@
     </div>
     <div class="mb-6"> 
         <label for="division" class="block mb-2 text-md font-light text-gray-900">Division</label>
-        <input formControlName="division" type="text" id="division" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="" required>
-      </div>
+        <select formControlName="division" id="division" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5" required>
+          <option selected>Seleccione la division..</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+        
+      </div>      
     <div class="mb-6"> 
         <label for="campeonatos" class="block mb-2 text-md font-light text-gray-900">Campeonatos </label>
-        <input type="tel" formControlName="campeonatos" id="campeonatos" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="87174949" required>
+        <input type="number" formControlName="campeonatos" id="campeonatos" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="87174949" required>
       </div>
-    <div class="mb-6"> 
-        <label for="estado" class="block mb-2 text-md font-light text-gray-900">Estado </label>
-        <input  formControlName="estado" value="1" type="text" id="estado" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="" required>
+    
+      <div class="mb-6" > 
+        <label for="estado" class="block mb-2 text-md font-light text-gray-900">Estados </label>
+        <select  formControlName="estado" id="estado" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5" required>
+          <option selected>Seleccione el estado..</option>
+          <option *ngFor="let estado of estados" value="{{estado.id}}">{{estado.nombre}}</option>
+        </select>
       </div>
-      <div class="mb-6"> 
-        <label for="Propetario" class="block mb-2 text-md font-light text-gray-900">Propetario </label>
-        <input type="text" formControlName="propietario" value="1" id="Propetario" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="" required>
+    
+      <div class="mb-6" > 
+        <label for="propietario" class="block mb-2 text-md font-light text-gray-900">Propetario </label>
+        <select  formControlName="propietario" id="propietario" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5" required>
+          <option selected>Seleccione el estado..</option>
+          <option *ngFor="let propietario of propietarios" value="{{propietario.id}}">{{propietario.nombre}}</option>
+        </select>
       </div>
     
      

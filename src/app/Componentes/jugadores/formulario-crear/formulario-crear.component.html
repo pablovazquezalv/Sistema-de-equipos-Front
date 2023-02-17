@@ -1,4 +1,6 @@
 
+
+
 <div class="flex flex-row ">
   <div class="imagen basis-1/4  h-screen ">   
   </div>
@@ -17,17 +19,27 @@
       <label for="ap_materno" class="block mb-2 text-md font-light text-gray-900">Apellido Materno </label>
       <input type="tel" formControlName="ap_materno" id="ap_materno" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="87174949" required>
     </div>
-  <div class="mb-6"> 
+  
+    <div class="mb-6"> 
       <label for="sexo" class="block mb-2 text-md font-light text-gray-900">Sexo </label>
-      <input  formControlName="sexo" value="1" type="text" id="estado" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="" required>
-    </div>
+      <select formControlName="sexo"   id="sexo" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5" required>
+        <option selected>Seleccione el sexo..</option>
+        <option value="M">Masculino</option>
+        <option value="F">Femenino</option>
+      </select>
+    </div>    
+
     <div class="mb-6"> 
       <label for="f_nac" class="block mb-2 text-md font-light text-gray-900">Fecha de Nacimiento </label>
-      <input type="text" formControlName="f_nac" value="1" id="Propetario" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="" required>
+      <input type="date" id="f_nac" name="f_nac" formControlName="f_nac" min="1950-01-01" max="2003-12-31">
     </div>
-    <div class="mb-6"> 
+    
+    <div class="mb-6" > 
       <label for="equipo" class="block mb-2 text-md font-light text-gray-900">Equipo </label>
-      <input type="text" formControlName="equipo" value="1" id="equipo" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="" required>
+      <select  formControlName="equipo" id="equipo" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5" required>
+        <option selected>Seleccione el equipo..</option>
+        <option *ngFor="let equipo of equipos" value="{{equipo.id}}">{{equipo.nombre}}</option>
+      </select>
     </div>
   
    

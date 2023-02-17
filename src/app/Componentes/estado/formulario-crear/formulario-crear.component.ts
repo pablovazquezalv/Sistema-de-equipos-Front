@@ -24,7 +24,7 @@ constructor(private fb: FormBuilder,private estadoService: EstadoService,private
 onSubmit(values: Estado)
 {
   this.estadoService.addEstado(values).subscribe();
-  this.router.navigate(['equipo/ver'])
+  //this.router.navigate(['equipo/ver'])
 }
 
 }

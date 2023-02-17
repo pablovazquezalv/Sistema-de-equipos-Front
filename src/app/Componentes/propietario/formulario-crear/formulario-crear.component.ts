@@ -12,7 +12,8 @@ import { Router } from '@angular/router';
 @Injectable()
 export class FormularioCrearComponent {
   form: FormGroup;
-propietario?:Propietario;
+  propietario?:Propietario;
+  
 
 constructor(private fb: FormBuilder,private propietarioService: PropietarioService,private router:Router)
 {

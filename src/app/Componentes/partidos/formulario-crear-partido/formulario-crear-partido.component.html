@@ -1,1 +1,43 @@
-<p>formulario-crear-partido works!</p>
+
+<div class="flex flex-row ">
+    <div class="imagen basis-1/4  h-screen ">   
+    </div>
+    <div class="basis-1/4">
+    <h3 class="text-4xl font-light text-green-700 pt-5 pl-10">Crear Partido!</h3>
+   <form  [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="pt-5 pl-10">
+    <div class="mb-6" > 
+        <label for="equipo" class="block mb-2 text-md font-light text-gray-900">Local </label>
+        <select  formControlName="local" id="equipo" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5" required>
+          <option selected>Seleccione el equipo Local..</option>
+          <option *ngFor="let equipo of equipos" value="{{equipo.id}}">{{equipo.nombre}}</option>
+        </select>
+      </div>
+    
+      <div class="mb-6" > 
+        <label for="visitante" class="block mb-2 text-md font-light text-gray-900">Visitante </label>
+        <select  formControlName="visitante" id="visitante" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5" required>
+          <option selected>Seleccione el equipo Local..</option>
+          <option *ngFor="let equipo of equipos" value="{{equipo.id}}">{{equipo.nombre}}</option>
+        </select>
+      </div>  
+      <div class="mb-6"> 
+        <label for="f_nac" class="block mb-2 text-md font-light text-gray-900">Fecha del Partido </label>
+        <input type="date" id="f_nac" name="f_nac" formControlName="fecha" min="16/02/2023" max="2024-12-31">
+      </div>
+      <div class="mb-6"> 
+        <label for="time" class="block mb-2 text-md font-light text-gray-900">Hora del Partido </label>
+        <input type="time" id="time" formControlName="hora" name="time" min="09:00" max="18:00" required>
+      </div>
+
+    
+
+    <button type="submit"  class="text-white bg-green-700 hover:bg-green-800 focus:ring-4  font-medium rounded-lg text-sm w-full sm:w-auto px-6 py-1.5 text-center">Crear Partido</button>
+  </form>
+  
+    </div>
+    
+
+  </div>
+  
+
+

@@ -35,4 +35,12 @@ export class VerEstadosComponent implements OnInit{
   {
     this.router.navigate(['estados/editar'])
   }
+
+   deleteEstado(id: number)
+  {
+    if (confirm("¿Está seguro de eliminar la persona?"))
+    {
+      this.estadoService.eliminarEstado(id).subscribe(response => location.reload());
+    }
+  }
 }
