@@ -11,20 +11,17 @@ import { Router } from '@angular/router';
 })
 export class FormularioCrearComponent {
   form: FormGroup;
-estado?:Estado;
+  estado?:Estado;
 
-constructor(private fb: FormBuilder,private estadoService: EstadoService,private router:Router)
-{
-  this.form = this.fb.group({
-    nombre:  ['',Validators.required],
+  constructor(private fb: FormBuilder,private estadoService: EstadoService,private router:Router)
+  {
+    this.form = this.fb.group({
+      nombre:  ['',Validators.required],
+    })
+  }
 
-  })
-}
-
-onSubmit(values: Estado)
-{
-  this.estadoService.addEstado(values).subscribe();
-  //this.router.navigate(['equipo/ver'])
-}
-
+  onSubmit(values: Estado)
+  {
+    this.estadoService.addEstado(values).subscribe(response => { this.router.navigate(['estados/ver']); });
+  }
 }

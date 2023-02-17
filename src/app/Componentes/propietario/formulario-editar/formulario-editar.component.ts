@@ -4,8 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, of } from 'rxjs';
 import { Propietario } from 'src/app/Interfaces/propietario.interface';
 import { PropietarioService } from 'src/app/Services/propietario.service';
-
-
 @Component({
   selector: 'app-formulario-editar',
   templateUrl: './formulario-editar.component.html',
@@ -41,9 +39,8 @@ export class FormularioEditarComponent {
   {
     this.propietarioService.actualizarPropietario(propietario, this.id).subscribe(response => {
       console.log(response); this.router.navigate(['propietarios/ver'], 
-      { queryParams: { showMessage: true, message: 'Persona modificada con exito.' } });},
+      { queryParams: { showMessage: true, message: 'Persona modificada con exito.' } }); 
+      this.router.navigate(['propietario/ver']);},
       error => {console.log(error); this.showError = true;});
-    
   }
-
 }

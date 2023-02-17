@@ -1,47 +1,41 @@
-
 <div class="flex flex-row ">
     <div class="imagen basis-1/4  h-screen ">   
     </div>
+
     <div class="basis-1/4">
-    <h3 class="text-4xl font-light text-green-700 pt-5 pl-10">Crear Propietario</h3>
-   <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="pt-5 pl-10">
-    <div class="mb-6"> 
-      <label for="Nombre" class="block mb-2 text-md font-light text-gray-900">Nombre</label>
-      <input type="text" id="Nombre" formControlName="nombre" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="Jose Angel " required>
-    </div>
-    <div class="mb-6"> 
-        <label for="apellido_paterno" class="block mb-2 text-md font-light text-gray-900">Apellido Paterno</label>
-        <input type="text" id="apellido_paterno" formControlName="ap_paterno" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="" required>
-      </div>
-    <div class="mb-6"> 
-        <label for="apellido_materno" class="block mb-2 text-md font-light text-gray-900">Apellido Materno </label>
-        <input type="tel" id="apellido_materno" formControlName="ap_materno" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="" required>
-      </div>
-    
-      <div class="mb-6"> 
-        <label for="sexo" class="block mb-2 text-md font-light text-gray-900">Sexo </label>
-        <select formControlName="sexo"   id="sexo" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5" required>
-          <option selected>Seleccione el sexo..</option>
-          <option value="M">Masculino</option>
-          <option value="F">Femenino</option>
-        </select>
-      </div>  
-      <div class="mb-6"> 
-        <label for="f_nac" class="block mb-2 text-md font-light text-gray-900">Fecha de Nacimiento </label>
+      <h3 class="text-4xl font-light text-green-700 pt-5 pl-10">Crear Propietario</h3>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="pt-5 pl-10">
+        <div class="mb-6"> 
+          <label for="Nombre" class="block mb-2 text-md font-light text-gray-900">Nombre</label>
+          <input type="text" id="Nombre" formControlName="nombre" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="Ingresa tu nombre..." required>
+        </div>
+
+        <div class="mb-6"> 
+          <label for="apellido_paterno" class="block mb-2 text-md font-light text-gray-900">Apellido Paterno</label>
+          <input type="text" id="apellido_paterno" formControlName="ap_paterno" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="Ingresa tu apellido..." required>
+        </div>
+
+        <div class="mb-6"> 
+          <label for="apellido_materno" class="block mb-2 text-md font-light text-gray-900">Apellido Materno</label>
+          <input type="tel" id="apellido_materno" formControlName="ap_materno" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="Ingresa tu apellido..." required>
+        </div>
+
+        <div class="mb-6"> 
+          <label for="sexo" class="block mb-2 text-md font-light text-gray-900">Sexo</label>
+          <select formControlName="sexo"   id="sexo" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5" required>
+            <option selected>Seleccione el sexo..</option>
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
+            </select>
+        </div>
+
+        <div class="mb-6"> 
+        <label for="f_nac" class="block mb-2 text-md font-light text-gray-900">Fecha de Nacimiento</label>
         <input type="date" id="start" name="trip-start" formControlName="f_nac"  min="1950-01-01" max="2003-12-31">
-      </div>
-      
-     
-      
-    
-     
-    <button type="submit"  class="text-white bg-green-700 hover:bg-green-800 focus:ring-4  font-medium rounded-lg text-sm w-full sm:w-auto px-6 py-1.5 text-center">Crear Propietario</button>
-  </form>
-  
+        </div>
+
+        <button type="submit"  class="text-white bg-green-700 hover:bg-green-800 focus:ring-4  font-medium rounded-lg text-sm w-full sm:w-auto px-6 py-1.5 text-center">Crear Propietario</button>
+      </form>
     </div>
-    
-
-  </div>
-  
-
-
+</div>

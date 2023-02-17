@@ -35,9 +35,7 @@ export class FormularioEditarComponent {
   {
     this.estadoService.actualizarEstado(estado, this.id).subscribe(response => {
       console.log(response); this.router.navigate(['estados/ver'], 
-      { queryParams: { showMessage: true, message: 'Persona modificada con exito.' } });},
+      { queryParams: { showMessage: true, message: 'Persona modificada con exito.' } }); this.router.navigate(['estados/ver']);},
       error => {console.log(error); this.showError = true;});
-    
   }
-
 }

@@ -16,20 +16,16 @@ export class VerPropietariosComponent implements OnInit {
 
   propietarios: Propietario[] = [];
 
-
   constructor(private propietarioService: PropietarioService,private router:Router){ }
   
   ngOnInit()
   {
     this.getPropietarios();
   }
-  
 
   getPropietarios() {
     this.propietarioService.getPropietarios().subscribe(data => this.propietarios = data);
-    
   }
-
 
   crearPropietario()
   {
@@ -41,4 +37,11 @@ export class VerPropietariosComponent implements OnInit {
     this.router.navigate(['propietario/editar',id])
   }
 
+  deletePropietario(id: number)
+  {
+    if (confirm("¿Está seguro de eliminar el propietario?"))
+    {
+      this.propietarioService.eliminarPropietario(id).subscribe(response => {location.reload()}, error => console.log(error));
+    }
+  }
 }

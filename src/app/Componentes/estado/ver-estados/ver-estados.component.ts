@@ -35,7 +35,7 @@ export class VerEstadosComponent implements OnInit{
     this.router.navigate(['estados/editar',id])
   }
 
-   deleteEstado(id: number)
+  deleteEstado(id: number)
   {
     if (confirm("¿Está seguro de eliminar la persona?"))
     {

@@ -60,8 +60,6 @@ const routes: Routes = [
   { path:'partidos/editar/:id',component:FormularioEditarPartidoComponent}
 ];
 
-
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

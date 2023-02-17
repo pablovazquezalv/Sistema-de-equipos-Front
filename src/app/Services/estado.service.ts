@@ -43,7 +43,7 @@ export class EstadoService {
 
   mostrarUnico(id: number)
   {
-    return this.http.get<Estado>(this.estados_url + '/mostrar/' + id).pipe(retry(3));
+    return this.http.get<Estado>(this.estados_url + '/' + id).pipe(retry(3));
   }
 
   private handleError(error: HttpErrorResponse)
