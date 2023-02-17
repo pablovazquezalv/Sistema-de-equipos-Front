@@ -24,31 +24,37 @@ import { FormularioEditarComponent as FormularioEditarPropietario } from './Comp
 import { FormularioCrearPartidoComponent } from './Componentes/partidos/formulario-crear-partido/formulario-crear-partido.component';
 import { VerPartidosComponent } from './Componentes/partidos/ver-partidos/ver-partidos.component';
 import { FormularioEditarPartidoComponent } from './Componentes/partidos/formulario-editar-partido/formulario-editar-partido.component';
+
 const routes: Routes = [
 //Login
-  { path:'login',component:LoginComponent},
+{ path:'login',component:LoginComponent},
 { path:'sign-up',component:SignUpComponent},
 { path:'mobile-code',component:MobileCodeComponent},
+
 //Equipo
 { path:'equipo/ver',component:VerEquiposComponent},
-{path:'equipo/crear',component:FormularioCrearComponent},
-{path:'equipo/editar/:id',component:FormularioEditarComponent},
+{ path:'equipo/crear',component:FormularioCrearComponent},
+{ path:'equipo/editar/:id',component:FormularioEditarComponent},
+
 //Jugadores
 { path:'jugadores/ver',component:VerJugadoresComponent},
-{path:'jugadores/crear',component:FormularioJugador},
-{path:'jugadores/editar/:id',component:FormularioEditarJugador},
+{ path:'jugadores/crear',component:FormularioJugador},
+{ path:'jugadores/editar/:id',component:FormularioEditarJugador},
+
 //Estados
 { path:'estados/ver',component:VerEstadosComponent},
-{path:'estados/crear',component:FormularioEstado},
-{path:'estados/editar/:id',component:FormularioEditarEstado},
+{ path:'estados/crear',component:FormularioEstado},
+{ path:'estados/editar/:id',component:FormularioEditarEstado},
+
 //Propietarios
 { path:'propietario/ver',component:VerPropietariosComponent},
-{path:'propietario/crear',component:FormularioPropietario},
-{path:'propietario/editar/:id',component:FormularioEditarPropietario},
+{ path:'propietario/crear',component:FormularioPropietario},
+{ path:'propietario/editar/:id',component:FormularioEditarPropietario},
+
 //Partidos
 { path:'partidos/ver',component:VerPartidosComponent},
-{path:'partidos/crear',component:FormularioCrearPartidoComponent},
-{path:'partidos/editar/:id',component:FormularioEditarPartidoComponent}
+{ path:'partidos/crear',component:FormularioCrearPartidoComponent},
+{ path:'partidos/editar/:id',component:FormularioEditarPartidoComponent}
 ];
 
 
