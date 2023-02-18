@@ -17,18 +17,17 @@ export class FormularioEditarComponent {
   showError: boolean = false;
   equipos: Equipo[] = [];
   id: number = 0;
-  jugador?: Jugador;
 
   public apiFailed: boolean = false;
 
   constructor(private equipoService: EquipoService,private jugadorService: JugadorService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
     this.form = this.fb.group({
-      nombre:  ['',Validators.required],
-      ap_paterno:  ['',Validators.required],
-      ap_materno:  ['',Validators.required],
-      sexo:  ['',Validators.required],
-      f_nac:  ['',Validators.required],
-      equipo:  ['',Validators.required],
+      nombre: ['', Validators.required],
+      ap_paterno: ['', Validators.required],
+      ap_materno: ['', Validators.required],
+      sexo: ['', Validators.required],
+      f_nac: ['', Validators.required],
+      equipo: ['', Validators.required],
     });
   }
 
@@ -40,7 +39,7 @@ export class FormularioEditarComponent {
   }
 
   getJugador() {
-    this.jugadorService.mostrarUnico(this.id).subscribe(jugador=> {this.jugador = jugador; this.form.patchValue(jugador)});
+    this.jugadorService.mostrarUnico(this.id).subscribe(jugador => {this.form.patchValue(jugador)});
   }
 
   getEquipos()

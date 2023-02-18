@@ -18,7 +18,6 @@ export class FormularioEditarComponent {
   showError: boolean = false;
 
   id: number = 0;
-  equipo?: Equipo;
   estados: Estado[] = [];
   propietarios: Propietario[] = [];
 
@@ -43,7 +42,7 @@ export class FormularioEditarComponent {
 
   getEquipo() 
   {
-    this.equipoService.mostrarUnico(this.id).subscribe(equipo => {this.equipo = equipo; this.form.patchValue(equipo)});
+    this.equipoService.mostrarUnico(this.id).subscribe(equipo => {this.form.patchValue(equipo)});
   }
 
   getEstados() 

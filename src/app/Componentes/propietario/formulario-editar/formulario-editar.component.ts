@@ -14,7 +14,6 @@ export class FormularioEditarComponent {
   showError: boolean = false;
 
   id: number = 0;
-  propietario?: Propietario;
 
   public apiFailed: boolean = false;
 
@@ -34,7 +33,7 @@ export class FormularioEditarComponent {
   }
 
   getPropietario() {
-    this.propietarioService.mostrarUnico(this.id).subscribe(propietario => {this.propietario = propietario; this.form.patchValue(propietario)});
+    this.propietarioService.mostrarUnico(this.id).subscribe(propietario => {this.form.patchValue(propietario)});
   }
 
   onSubmit(propietario: Propietario) 

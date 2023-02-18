@@ -13,6 +13,9 @@ export class FormularioCrearComponent {
   form: FormGroup;
   estado?:Estado;
 
+  showMessage: boolean = false;
+  messages:string[] = [];
+
   public apiFailed: boolean = false;
 
   constructor(private fb: FormBuilder,private estadoService: EstadoService,private router:Router)
@@ -24,7 +27,12 @@ export class FormularioCrearComponent {
 
   onSubmit(values: Estado)
   {
-    this.estadoService.addEstado(values).subscribe(response => { this.router.navigate(['estados/ver']); }, error => { this.apiFailed = true; });
+    this.estadoService.addEstado(values).subscribe(response => {
+      this.router.navigate(['estados/ver']);
+    }, (error:any) => {
+      this.apiFailed = true;
+      this.showMessage = true;
+    });
   }
 
   onAnimationEnd(): void {

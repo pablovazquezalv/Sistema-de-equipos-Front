@@ -16,7 +16,6 @@ export class FormularioEditarPartidoComponent  {
   showError: boolean = false;
   equipos: Equipo[] = [];
   id: number = 0;
-  partido?: Partido;
 
   public apiFailed: boolean = false;
 
@@ -40,7 +39,7 @@ export class FormularioEditarPartidoComponent  {
 
   getPartido()
   {
-    this.partidoService.mostrarUnico(this.id).subscribe(partido => {this.partido = partido; this.form.patchValue(partido)});
+    this.partidoService.mostrarUnico(this.id).subscribe(partido => {this.form.patchValue(partido)});
   }
 
   onSubmit(partido: Partido) 

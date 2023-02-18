@@ -25,10 +25,7 @@ export class EstadoService {
 
   addEstado(estado: Estado):Observable<Estado>
   {
-    return this.http.post<Estado>(this.estados_url,estado)
-    .pipe(
-      catchError(this.handleError)
-    );
+    return this.http.post<Estado>(this.estados_url,estado).pipe(retry(3), catchError(this.handleError));
   }
 
   eliminarEstado(id: number)

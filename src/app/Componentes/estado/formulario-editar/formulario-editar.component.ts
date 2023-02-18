@@ -14,7 +14,6 @@ export class FormularioEditarComponent {
   showError: boolean = false;
 
   id: number = 0;
-  estado?: Estado;
 
   public apiFailed: boolean = false;
 
@@ -30,7 +29,7 @@ export class FormularioEditarComponent {
   }
 
   getEstado() {
-    this.estadoService.mostrarUnico(this.id).subscribe(estado => {this.estado = estado; this.form.patchValue(estado)});
+    this.estadoService.mostrarUnico(this.id).subscribe(estado => {this.form.patchValue(estado)});
   }
 
   onSubmit(estado: Estado) 
