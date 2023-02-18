@@ -1,39 +1,51 @@
-
 <div class="flex flex-row ">
-    <div class="imagen basis-1/4  h-screen ">   
-    </div>
-    <div class="basis-1/4">
+  <div class="imagen basis-1/4  h-screen ">   
+  </div>
+
+  <div class="basis-1/4">
     <h3 class="text-4xl font-light text-green-700 pt-5 pl-10">Crea tu cuenta!</h3>
-   <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="pt-5 pl-10">
-    <div class="mb-6"> 
-      <label for="Nombre" class="block mb-2 text-md font-light text-gray-900">Nombre</label>
-      <input type="text" formControlName="name"  id="Nombre" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="Jose Angel " required>
-    </div>
-    <div class="mb-6"> 
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="pt-5 pl-10 mb-2">
+
+      <!--Username-->
+      <div class="mb-6"> 
+        <label for="Nombre" class="block mb-2 text-md font-light text-gray-900">Nombre</label>
+        <input type="text" formControlName="name"  id="Nombre" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="Ingresa un nombre de usuario..." required>
+      </div>
+
+      <!--Telefono-->
+      <div class="mb-6"> 
         <label for="Telefono" class="block mb-2 text-md font-light text-gray-900">Telefono </label>
-        <input type="tel" formControlName="phone" id="Telefono" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="87174949" required>
+        <input type="tel" formControlName="phone" id="Telefono" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="Ingresa tu numero de telefono..." required>
       </div>
-    <div class="mb-6"> 
+
+      <!--Email-->
+      <div class="mb-6"> 
         <label for="email" class="block mb-2 text-md font-light text-gray-900">Correo</label>
-        <input type="email" formControlName="email" id="email" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="micorreo@gmail.com" required>
+        <input type="email" formControlName="email" id="email" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="Ingresa tu email..." required>
       </div>
-    <div class="mb-6">
+
+      <!--Password-->
+      <div class="mb-6">
         <label for="password" class="block mb-2 text-md font-light text-gray-900">Tu contraseña</label>
-        <input type="password" formControlName="password" id="password" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="" required>
+        <input type="password" formControlName="password" id="password" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="Ingresa una contraseña..." required>
       </div>
+
+      <!--Password confirm-->
       <div class="mb-6">
         <label for="password_confirm" class="block mb-2 text-md font-light text-gray-900">Confirmar contraseña</label>
-        <input type="password" formControlName="password_confirmation" id="password_confirm" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="" required>
+        <input type="password" formControlName="password_confirmation" id="password_confirm" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="Repite la contraseña..." required>
       </div>
-     
-    <button type="submit"  class="text-white bg-green-700 hover:bg-green-800 focus:ring-4  font-medium rounded-lg text-sm w-full sm:w-auto px-6 py-1.5 text-center">Crear</button>
-  </form>
-  
-  <label  class=" pt-5 pl-10 ml-2 text-sm font-medium text-dark">Ya tengo cuenta <button (click)="backToLogin()" class="text-blue-600 hover:underline dark:text-blue-500">Iniciar sesion</button></label>
-    </div>
-    
-    <router-outlet></router-outlet>
 
-  </div>
-  
+      <hr>
 
+      <!--Boton-->
+      <button type="submit" [ngClass]="{ 'button-failed': apiFailed }" (animationend)="onAnimationEnd()" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4  font-medium rounded-lg text-sm w-full sm:w-auto px-6 py-1.5 mt-4 text-center">Crear Usuario</button>
+    </form>  
+
+    <!--Login-->
+    <label  class=" pt-5 pl-10 ml-2 text-sm font-medium text-dark">Ya tienes cuenta? <button (click)="backToLogin()" class="text-blue-600 hover:underline dark:text-blue-500">Iniciar sesion</button></label>
+  </div>    
+
+  <router-outlet></router-outlet>
+</div>

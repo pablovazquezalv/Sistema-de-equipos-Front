@@ -24,7 +24,7 @@ export class UserService {
 
   login(user: User)
   {
-     this.http.post(this.login_url,user).subscribe((response:any)=>{localStorage.setItem('token',response.token)})
+     this.http.post(this.login_url,user).subscribe((response:any)=>{localStorage.setItem('token', response.token)});
   }
   
   private handleError(error: HttpErrorResponse)

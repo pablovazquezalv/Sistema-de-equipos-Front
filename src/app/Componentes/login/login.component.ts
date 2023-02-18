@@ -12,26 +12,30 @@ import { UserService } from 'src/app/Services/user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-form: FormGroup;
-estado?:User;
 
-constructor(private fb: FormBuilder,private userService: UserService,private router:Router)
-{
-  this.form = this.fb.group({
-    email:  ['',Validators.required],
-    password:  ['',Validators.required],
-  })
-}
+  form: FormGroup;
+  estado?:User;
 
-onSubmit(values: User)
-{
-  this.userService.login(values)
-   this.router.navigate(['estados/ver']); 
+  public apiFailed: boolean = false;
 
-}
-  backToSignUp()
-{
-  this.router.navigate(['sign-up'])
-}
+  constructor(private fb: FormBuilder,private userService: UserService,private router:Router)
+  {
+    this.form = this.fb.group({
+      email:  ['',Validators.required],
+      password:  ['',Validators.required],
+    })
+  }
 
+  onSubmit(values: User)
+  {
+    this.userService.login(values);
+  }
+    backToSignUp()
+  {
+    this.router.navigate(['sign-up'])
+  }
+
+  onAnimationEnd(): void {
+    this.apiFailed = false;
+  }
 }

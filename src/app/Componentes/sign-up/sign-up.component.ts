@@ -12,10 +12,11 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class SignUpComponent {
 
-  
   showError: boolean = false;
   form: FormGroup;
   usuario?:User;
+
+  public apiFailed: boolean = false;
   
   constructor(private usuarioService: UserService,private fb: FormBuilder,private router:Router)
   {
@@ -26,30 +27,29 @@ export class SignUpComponent {
       password: ['',Validators.required],
       password_confirmation: ['',Validators.required],
     });
-    
   }
  
-  ngOnInit()
-  {
-  }
+  ngOnInit() { }
 
   onSubmit(values: User)
   {
     this.usuarioService.addUser(values).subscribe(response => {
       console.log(response); this.router.navigate(['mobile-code'], 
       { queryParams: { showMessage: true, message: 'Persona modificada con exito.' } });},
-      error => {console.log(error); this.showError = true;});
-    console.log("se envio") 
+      error => {console.log(error); this.showError = true; this.apiFailed = true;});
   }
+
   backToLogin()
   {
     this.router.navigate(['login'])
   }
   
-/*
-  register()
+  /*register()
   {
     this.router.navigate(['mobile-code'])
   }*/
 
+  onAnimationEnd(): void {
+    this.apiFailed = false;
+  }
 }
