@@ -12,6 +12,7 @@ export class UserService {
 
   
   private user_url =environment.urlapi+'/register';
+  private login_url =environment.urlapi+'/login';
 
   
   constructor(private http:HttpClient) { }
@@ -21,6 +22,10 @@ export class UserService {
     return this.http.post<User>(this.user_url,user).pipe(catchError(this.handleError));
   }
 
+  login(user: User)
+  {
+     this.http.post(this.login_url,user).subscribe((response:any)=>{localStorage.setItem('token',response.token)})
+  }
   
   private handleError(error: HttpErrorResponse)
   {
