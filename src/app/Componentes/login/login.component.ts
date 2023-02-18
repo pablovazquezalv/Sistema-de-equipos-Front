@@ -28,9 +28,10 @@ export class LoginComponent {
 
   onSubmit(values: User)
   {
-    this.userService.login(values);
+    this.userService.login(values).subscribe(response=>{localStorage.setItem('token', response.token)}, (error:any) => {console.log(error); this.apiFailed = true;});
   }
-    backToSignUp()
+
+  backToSignUp()
   {
     this.router.navigate(['sign-up'])
   }
