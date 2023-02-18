@@ -16,6 +16,8 @@ export class FormularioEditarComponent {
   id: number = 0;
   propietario?: Propietario;
 
+  public apiFailed: boolean = false;
+
   constructor(private propietarioService: PropietarioService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
     this.form = this.fb.group({
       nombre:  ['',Validators.required],
@@ -41,6 +43,10 @@ export class FormularioEditarComponent {
       console.log(response); this.router.navigate(['propietarios/ver'], 
       { queryParams: { showMessage: true, message: 'Persona modificada con exito.' } }); 
       this.router.navigate(['propietario/ver']);},
-      error => {console.log(error); this.showError = true;});
+      error => {console.log(error); this.showError = true; this.apiFailed = true;});
+  }
+
+  onAnimationEnd(): void {
+    this.apiFailed = false;
   }
 }

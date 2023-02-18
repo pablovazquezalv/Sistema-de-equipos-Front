@@ -19,6 +19,8 @@ export class FormularioEditarComponent {
   id: number = 0;
   jugador?: Jugador;
 
+  public apiFailed: boolean = false;
+
   constructor(private equipoService: EquipoService,private jugadorService: JugadorService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
     this.form = this.fb.group({
       nombre:  ['',Validators.required],
@@ -51,6 +53,10 @@ export class FormularioEditarComponent {
     this.jugadorService.actualizarJugador(propietario, this.id).subscribe(response => {
       console.log(response); this.router.navigate(['jugadores/ver'], 
       { queryParams: { showMessage: true, message: 'Persona modificada con exito.' } });},
-      error => {console.log(error); this.showError = true;});
+      error => {console.log(error); this.showError = true; this.apiFailed = true;});
+  }
+
+  onAnimationEnd(): void {
+    this.apiFailed = false;
   }
 }

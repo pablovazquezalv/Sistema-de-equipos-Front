@@ -6,36 +6,87 @@
       <h3 class="text-4xl font-light text-green-700 pt-5 pl-10">Agregar Propietario</h3>
 
       <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="pt-5 pl-10">
+        <!--Nombre-->
         <div class="mb-6"> 
           <label for="Nombre" class="block mb-2 text-md font-light text-gray-900">Nombre</label>
-          <input type="text" id="Nombre" formControlName="nombre" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="Ingresa tu nombre..." required>
+          <input type="text" formControlName="nombre" id="Nombre" [ngClass]="{'border border-2 border-red-400': form.get('nombre')?.invalid && form.get('nombre')?.touched}" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="Ingresa tu nombre..." required>
+  
+          <!--Alert-->
+          <div *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched" class="flex p-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 mt-3" role="alert">
+            <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+            <span class="sr-only">Info</span>
+            <div>
+              <span class="font-medium">Error en la validacion!</span> El nombre es requerido.
+            </div>
+          </div>
         </div>
-
+  
+        <!--Apellido Paterno-->
         <div class="mb-6"> 
-          <label for="apellido_paterno" class="block mb-2 text-md font-light text-gray-900">Apellido Paterno</label>
-          <input type="text" id="apellido_paterno" formControlName="ap_paterno" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="Ingresa tu apellido..." required>
+          <label for="ap_paterno" class="block mb-2 text-md font-light text-gray-900">Apellido Paterno</label>
+          <input formControlName="ap_paterno" type="text" id="ap_paterno" [ngClass]="{'border border-2 border-red-400': form.get('ap_paterno')?.invalid && form.get('ap_paterno')?.touched}" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="Ingresa tu apellido..." required>
+  
+          <!--Alert-->
+          <div *ngIf="form.get('ap_paterno')?.invalid && form.get('ap_paterno')?.touched" class="flex p-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 mt-3" role="alert">
+            <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+            <span class="sr-only">Info</span>
+            <div>
+              <span class="font-medium">Error en la validacion!</span> El apellido paterno es requerido.
+            </div>
+          </div>
         </div>
-
+  
+        <!--Apellido Materno-->
         <div class="mb-6"> 
-          <label for="apellido_materno" class="block mb-2 text-md font-light text-gray-900">Apellido Materno</label>
-          <input type="tel" id="apellido_materno" formControlName="ap_materno" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="Ingresa tu apellido..." required>
-        </div>
-
+          <label for="ap_materno" class="block mb-2 text-md font-light text-gray-900">Apellido Materno</label>
+          <input type="tel" formControlName="ap_materno" id="ap_materno" [ngClass]="{'border border-2 border-red-400': form.get('ap_materno')?.invalid && form.get('ap_materno')?.touched}" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="Ingresa tu apellido..." required>
+  
+          <!--Alert-->
+          <div *ngIf="form.get('ap_materno')?.invalid && form.get('ap_materno')?.touched" class="flex p-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 mt-3" role="alert">
+            <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+            <span class="sr-only">Info</span>
+            <div>
+              <span class="font-medium">Error en la validacion!</span> El apellido materno es requerido.
+            </div>
+          </div>
+        </div>  
+  
+        <!--Sexo-->
         <div class="mb-6"> 
           <label for="sexo" class="block mb-2 text-md font-light text-gray-900">Sexo</label>
-          <select formControlName="sexo"   id="sexo" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5" required>
-            <option value="" selected>Seleccione el sexo...</option>
+          <select formControlName="sexo" id="sexo" [ngClass]="{'border border-2 border-red-400': form.get('sexo')?.invalid && form.get('sexo')?.touched}" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5" required>
+            <option value="" selected>Selecciona un sexo...</option>
             <option value="M">Masculino</option>
             <option value="F">Femenino</option>
-            </select>
-        </div>
-
+          </select>
+  
+          <!--Alert-->
+          <div *ngIf="form.get('sexo')?.invalid && form.get('sexo')?.touched" class="flex p-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 mt-3" role="alert">
+            <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+            <span class="sr-only">Info</span>
+            <div>
+              <span class="font-medium">Error en la validacion!</span> El sexo es requerido.
+            </div>
+          </div>
+        </div>    
+  
+        <!--Fecha de Nacimiento-->
         <div class="mb-6"> 
-        <label for="f_nac" class="block mb-2 text-md font-light text-gray-900">Fecha de Nacimiento</label>
-        <input type="date" id="start" name="trip-start" formControlName="f_nac"  min="1950-01-01" max="2004-12-31">
-        </div>
-
-        <button type="submit"  class="text-white bg-green-700 hover:bg-green-800 focus:ring-4  font-medium rounded-lg text-sm w-full sm:w-auto px-6 py-1.5 text-center">Crear Propietario</button>
+          <label for="f_nac" class="block mb-2 text-md font-light text-gray-900">Fecha de Nacimiento</label>
+          <input type="date" [ngClass]="{'border border-2 border-red-400': form.get('f_nac')?.invalid && form.get('f_nac')?.touched}" class="rounded-lg p-2.5" id="f_nac" name="f_nac" formControlName="f_nac" min="1950-01-01" max="2004-12-31">
+  
+          <!--Alert-->
+          <div *ngIf="form.get('f_nac')?.invalid && form.get('f_nac')?.touched" class="flex p-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 mt-3" role="alert">
+            <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+            <span class="sr-only">Info</span>
+            <div>
+              <span class="font-medium">Error en la validacion!</span> La fecha de nacimiento es requerida.
+            </div>
+          </div>
+        </div> 
+  
+        <!--Boton-->
+        <button type="submit" [ngClass]="{ 'button-failed': apiFailed }" (animationend)="onAnimationEnd()" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4  font-medium rounded-lg text-sm w-full sm:w-auto px-6 py-1.5 text-center">Crear Propietario</button>
       </form>
     </div>
 </div>

@@ -18,6 +18,8 @@ export class FormularioEditarPartidoComponent  {
   id: number = 0;
   partido?: Partido;
 
+  public apiFailed: boolean = false;
+
   constructor(private equiposService: EquipoService,private partidoService: PartidoService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
     this.form = this.fb.group({
       local:  ['',Validators.required],
@@ -46,7 +48,10 @@ export class FormularioEditarPartidoComponent  {
     this.partidoService.actualizarPartido(partido, this.id).subscribe(response => {
       console.log(response); this.router.navigate(['partidos/ver'], 
       { queryParams: { showMessage: true, message: 'Persona modificada con exito.' } });},
-      error => {console.log(error); this.showError = true;});
-    
+      error => {console.log(error); this.showError = true; this.apiFailed = true;});
+  }
+
+  onAnimationEnd(): void {
+    this.apiFailed = false;
   }
 }

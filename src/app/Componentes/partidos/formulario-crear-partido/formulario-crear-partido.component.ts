@@ -16,6 +16,8 @@ export class FormularioCrearPartidoComponent implements OnInit{
   form: FormGroup;
   partido?:Partido;
 
+  public apiFailed: boolean = false;
+
   constructor(private equiposService: EquipoService,private fb: FormBuilder,private partidoService: PartidoService,private router:Router)
   {
     this.form = this.fb.group({
@@ -37,6 +39,10 @@ export class FormularioCrearPartidoComponent implements OnInit{
 
   onSubmit(values: Partido)
   {
-    this.partidoService.addPartidos(values).subscribe(response => {console.log(response); this.router.navigate(['/partidos/ver']);});
+    this.partidoService.addPartidos(values).subscribe(response => {console.log(response); this.router.navigate(['/partidos/ver']);}, error => { this.apiFailed = true; });
+  }
+
+  onAnimationEnd(): void {
+    this.apiFailed = false;
   }
 }

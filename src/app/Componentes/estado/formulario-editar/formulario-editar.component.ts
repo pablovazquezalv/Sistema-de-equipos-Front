@@ -16,6 +16,8 @@ export class FormularioEditarComponent {
   id: number = 0;
   estado?: Estado;
 
+  public apiFailed: boolean = false;
+
   constructor(private estadoService: EstadoService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
     this.form = this.fb.group({
       nombre: ['', Validators.required]
@@ -36,6 +38,10 @@ export class FormularioEditarComponent {
     this.estadoService.actualizarEstado(estado, this.id).subscribe(response => {
       console.log(response); this.router.navigate(['estados/ver'], 
       { queryParams: { showMessage: true, message: 'Persona modificada con exito.' } }); this.router.navigate(['estados/ver']);},
-      error => {console.log(error); this.showError = true;});
+      error => {console.log(error); this.showError = true; this.apiFailed = true; });
+  }
+
+  onAnimationEnd(): void {
+    this.apiFailed = false;
   }
 }

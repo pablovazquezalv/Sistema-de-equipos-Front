@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 export class FormularioCrearComponent {
   form: FormGroup;
   propietario?:Propietario;
+
+  public apiFailed: boolean = false;
   
   constructor(private fb: FormBuilder,private propietarioService: PropietarioService,private router:Router)
   {
@@ -27,6 +29,10 @@ export class FormularioCrearComponent {
 
   onSubmit(values: Propietario)
   {
-    this.propietarioService.addPropietario(values).subscribe(response => {this.router.navigate(['propietario/ver']);});
+    this.propietarioService.addPropietario(values).subscribe(response => {this.router.navigate(['propietario/ver']);}, error => { this.apiFailed = true; });
+  }
+
+  onAnimationEnd(): void {
+    this.apiFailed = false;
   }
 }

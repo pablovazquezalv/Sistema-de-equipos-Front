@@ -22,6 +22,8 @@ export class FormularioEditarComponent {
   estados: Estado[] = [];
   propietarios: Propietario[] = [];
 
+  public apiFailed: boolean = false;
+
   constructor(private propietarioService: PropietarioService,private estadoService: EstadoService,private equipoService: EquipoService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
     this.form = this.fb.group({
       nombre:  ['',Validators.required],
@@ -59,6 +61,10 @@ export class FormularioEditarComponent {
     this.equipoService.actualizarEquipo(estado, this.id).subscribe(response => {
       console.log(response); this.router.navigate(['equipo/ver'], 
       { queryParams: { showMessage: true, message: 'Persona modificada con exito.' } }); this.router.navigate(['equipo/ver']);},
-      error => {console.log(error); this.showError = true;});
+      error => {console.log(error); this.showError = true; this.apiFailed = true;});
+  }
+
+  public onAnimationEnd(): void {
+    this.apiFailed = false;
   }
 }

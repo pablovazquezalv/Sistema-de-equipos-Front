@@ -17,6 +17,8 @@ export class FormularioCrearComponent implements OnInit
   equipos: Equipo[] = [];
   form: FormGroup;
   jugador?:Jugador;
+
+  public apiFailed: boolean = false;
   
   constructor(private equipoService: EquipoService,private fb: FormBuilder,private jugadorService: JugadorService,private router:Router)
   {
@@ -41,6 +43,10 @@ export class FormularioCrearComponent implements OnInit
   }
   onSubmit(values: Jugador)
   {
-    this.jugadorService.addJugador(values).subscribe(response => { this.router.navigate(['jugadores/ver']); });
+    this.jugadorService.addJugador(values).subscribe(response => { this.router.navigate(['jugadores/ver']); }, error => { this.apiFailed = true; });
+  }
+
+  onAnimationEnd(): void {
+    this.apiFailed = false;
   }
 }

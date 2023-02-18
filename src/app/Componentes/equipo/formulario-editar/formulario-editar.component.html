@@ -6,44 +6,92 @@
     <h3 class="text-4xl font-light text-green-700 pt-5 pl-10">Modificar Equipo</h3>
 
     <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="pt-5 pl-10">
+      <!--Nombre-->
       <div class="mb-6"> 
-      <label for="Nombre" class="block mb-2 text-md font-light text-gray-900">Nombre</label>
-      <input type="text" formControlName="nombre" id="Nombre" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="Ingresa tu nombre..." required>
+        <label for="Nombre" class="block mb-2 text-md font-light text-gray-900">Nombre</label>
+        <input type="text" formControlName="nombre" id="Nombre" [ngClass]="{'border border-2 border-red-400': form.get('nombre')?.invalid && form.get('nombre')?.touched}" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="Ingresa tu nombre..." required>
+        
+        <!--Alert-->
+        <div *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched" class="flex p-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 mt-3" role="alert">
+          <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+          <span class="sr-only">Info</span>
+          <div>
+            <span class="font-medium">Error en la validacion!</span> El nombre es requerido.
+          </div>
+        </div>
       </div>
 
+      <!--Division-->
       <div class="mb-6"> 
         <label for="division" class="block mb-2 text-md font-light text-gray-900">Division</label>
-        <select formControlName="division" id="division" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5" required>
-          <option value="" selected>Selecciona la division...</option>
+        <select formControlName="division" id="division" [ngClass]="{'border border-red-400': form.get('division')?.invalid && form.get('division')?.touched}" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5" required>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
         </select>    
+
+        <!--Alert-->
+        <div *ngIf="form.get('division')?.invalid && form.get('division')?.touched" class="flex p-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 mt-3" role="alert">
+          <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+          <span class="sr-only">Info</span>
+          <div>
+            <span class="font-medium">Error en la validacion!</span> La division es requerida.
+          </div>
+        </div>
       </div>
 
+      <!--Campeonatos-->
       <div class="mb-6"> 
         <label for="campeonatos" class="block mb-2 text-md font-light text-gray-900">Campeonatos </label>
-        <input type="number" formControlName="campeonatos" id="campeonatos" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="Ingrese el numero de campeonatos..." required>
+        <input type="number" formControlName="campeonatos" id="campeonatos" [ngClass]="{'border border-red-400': form.get('campeonatos')?.invalid && form.get('campeonatos')?.touched}" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="Ingrese el numero de campeonatos..." required>
+        
+        <!--Alert-->
+        <div *ngIf="form.get('campeonatos')?.invalid && form.get('campeonatos')?.touched" class="flex p-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 mt-3" role="alert">
+          <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+          <span class="sr-only">Info</span>
+          <div>
+            <span class="font-medium">Error en la validacion!</span> La division es requerida.
+          </div>
+        </div>
       </div>   
 
+      <!--Estados-->
       <div class="mb-6" > 
         <label for="estado" class="block mb-2 text-md font-light text-gray-900">Estados </label>
-        <select  formControlName="estado" id="estado" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5" required>
-          <option value="" selected>Seleccione el estado...</option>
+        <select  formControlName="estado" id="estado" [ngClass]="{'border border-red-400': form.get('estado')?.invalid && form.get('estado')?.touched}" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5" required>
           <option *ngFor="let estado of estados" value="{{estado.id}}">{{estado.nombre}}</option>
         </select>
+
+        <!--Alert-->
+        <div *ngIf="form.get('estado')?.invalid && form.get('estado')?.touched" class="flex p-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 mt-3" role="alert">
+          <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+          <span class="sr-only">Info</span>
+          <div>
+            <span class="font-medium">Error en la validacion!</span> El estado es requerido.
+          </div>
+        </div>
       </div>  
 
+      <!--Propietarios-->
       <div class="mb-6" > 
         <label for="propietario" class="block mb-2 text-md font-light text-gray-900">Propietario </label>
-        <select  formControlName="propietario" id="propietario" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5" required>
-          <option value="" selected>Seleccione el estado...</option>
+        <select  formControlName="propietario" id="propietario" [ngClass]="{'border border-red-400': form.get('propietario')?.invalid && form.get('propietario')?.touched}" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5" required>
           <option *ngFor="let propietario of propietarios" value="{{propietario.id}}">{{propietario.nombre}}</option>
         </select>
+
+        <!--Alert-->
+        <div *ngIf="form.get('propietario')?.invalid && form.get('propietario')?.touched" class="flex p-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 mt-3" role="alert">
+          <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+          <span class="sr-only">Info</span>
+          <div>
+            <span class="font-medium">Error en la validacion!</span> El propietario es requerido.
+          </div>
+        </div>
       </div>    
 
-      <button type="submit"  class="text-white bg-green-700 hover:bg-green-800 focus:ring-4  font-medium rounded-lg text-sm w-full sm:w-auto px-6 py-1.5 text-center">Editar Equipo</button>
-      </form> 
+      <!--Boton-->
+      <button type="submit" [ngClass]="{ 'button-failed': apiFailed }" (animationend)="onAnimationEnd()" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4  font-medium rounded-lg text-sm w-full sm:w-auto px-6 py-1.5 text-center">Modificar Equipo</button>
+    </form> 
   </div>
 
   <router-outlet></router-outlet>

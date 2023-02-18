@@ -20,6 +20,8 @@ export class FormularioCrearComponent implements OnInit{
   form: FormGroup;
   equipo?:Equipo;
 
+  public apiFailed: boolean = false;
+
   constructor(private propietarioService: PropietarioService,private estadoService: EstadoService,private fb: FormBuilder,private equipoService: EquipoService,private router:Router)
   {
     this.form = this.fb.group({
@@ -49,6 +51,10 @@ export class FormularioCrearComponent implements OnInit{
 
   onSubmit(values: Equipo)
   {
-    this.equipoService.addEquipo(values).subscribe(response => { this.router.navigate(['equipo/ver']); });
+    this.equipoService.addEquipo(values).subscribe(response => { this.router.navigate(['equipo/ver']); }, error => { this.apiFailed = true; });
+  }
+
+  onAnimationEnd(): void {
+    this.apiFailed = false;
   }
 }
