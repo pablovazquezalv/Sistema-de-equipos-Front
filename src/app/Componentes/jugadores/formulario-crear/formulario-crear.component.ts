@@ -45,8 +45,8 @@ export class FormularioCrearComponent implements OnInit
   }
   onSubmit(values: Jugador)
   {
-    this.equipoService.addEquipo(values).subscribe(response => { this.router.navigate(['estados/ver']); });
     
+    this.jugadorService.addJugador(values).subscribe();
     console.log("se envio") 
   }
 

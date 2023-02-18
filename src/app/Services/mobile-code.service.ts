@@ -3,22 +3,22 @@ import { HttpClient,HttpErrorResponse } from '@angular/common/http';
 import { Observable,throwError } from 'rxjs';
 import { catchError,retry } from 'rxjs/operators';
 import { User } from '../Interfaces/user.interface';
+import { Mobile } from '../Interfaces/mobile.interface';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class MobileCodeService {
 
-  
-  private user_url =environment.urlapi+'/register';
+  private code_url =environment.urlapi+'/auth/verificarCodigo';
 
   
   constructor(private http:HttpClient) { }
 
-  addUser(user: User):Observable<User>
+  addMobile(mobile: Mobile):Observable<Mobile>
   {
-    return this.http.post<User>(this.user_url,user).pipe(catchError(this.handleError));
+    return this.http.post<Mobile>(this.code_url,mobile).pipe(catchError(this.handleError));
   }
 
   

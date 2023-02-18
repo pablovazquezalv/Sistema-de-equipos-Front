@@ -27,6 +27,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { FormularioCrearPartidoComponent } from './Componentes/partidos/formulario-crear-partido/formulario-crear-partido.component';
 import { FormularioEditarPartidoComponent } from './Componentes/partidos/formulario-editar-partido/formulario-editar-partido.component';
 import { VerPartidosComponent } from './Componentes/partidos/ver-partidos/ver-partidos.component';
+import { PageNotFoundComponent } from './Componentes/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { VerPartidosComponent } from './Componentes/partidos/ver-partidos/ver-pa
     VerPropietariosComponent,
     FormularioCrearPartidoComponent,
     FormularioEditarPartidoComponent,
-    VerPartidosComponent
+    VerPartidosComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
