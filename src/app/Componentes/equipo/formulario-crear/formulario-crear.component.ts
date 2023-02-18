@@ -15,42 +15,40 @@ import { PropietarioService } from 'src/app/Services/propietario.service';
 
 @Injectable()
 export class FormularioCrearComponent implements OnInit{
-estados: Estado[] = [];
-propietarios: Propietario[] = [];
-form: FormGroup;
-equipo?:Equipo;
+  estados: Estado[] = [];
+  propietarios: Propietario[] = [];
+  form: FormGroup;
+  equipo?:Equipo;
 
-constructor(private propietarioService: PropietarioService,private estadoService: EstadoService,private fb: FormBuilder,private equipoService: EquipoService,private router:Router)
-{
-  this.form = this.fb.group({
-    nombre:  ['',Validators.required],
-    division:  ['',Validators.required],
-    campeonatos:  ['',Validators.required],
-    estado:  ['',Validators.required],
-    propietario:  ['',Validators.required],
-  })
-}
-ngOnInit()
-{
-  this.getEstados();
-  this.getPropietarios();
-}
+  constructor(private propietarioService: PropietarioService,private estadoService: EstadoService,private fb: FormBuilder,private equipoService: EquipoService,private router:Router)
+  {
+    this.form = this.fb.group({
+      nombre:  ['',Validators.required],
+      division:  ['',Validators.required],
+      campeonatos:  ['',Validators.required],
+      estado:  ['',Validators.required],
+      propietario:  ['',Validators.required],
+    })
+  }
 
+  ngOnInit()
+  {
+    this.getEstados();
+    this.getPropietarios();
+  }
 
-getEstados() 
-{
-  this.estadoService.getEstados().subscribe(data => this.estados = data);
-}
+  getEstados() 
+  {
+    this.estadoService.getEstados().subscribe(data => this.estados = data);
+  }
 
-getPropietarios() 
-{
-  this.propietarioService.getPropietarios().subscribe(data => this.propietarios = data);
-}
+  getPropietarios() 
+  {
+    this.propietarioService.getPropietarios().subscribe(data => this.propietarios = data);
+  }
 
-onSubmit(values: Equipo)
-{
-  this.equipoService.addEquipo(values).subscribe();
-  //this.router.navigate(['equipo/ver'])
-}
-
+  onSubmit(values: Equipo)
+  {
+    this.equipoService.addEquipo(values).subscribe(response => { this.router.navigate(['equipo/ver']); });
+  }
 }

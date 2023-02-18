@@ -20,7 +20,7 @@ export class FormularioEditarComponent {
   id: number = 0;
   equipo?: Equipo;
   estados: Estado[] = [];
-propietarios: Propietario[] = [];
+  propietarios: Propietario[] = [];
 
   constructor(private propietarioService: PropietarioService,private estadoService: EstadoService,private equipoService: EquipoService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
     this.form = this.fb.group({
@@ -30,14 +30,13 @@ propietarios: Propietario[] = [];
       estado:  ['',Validators.required],
       propietario:  ['',Validators.required],
     })
-
   }
-    ngOnInit(): void {
+
+  ngOnInit(): void {
     this.route.params.pipe(catchError(error => of({ id: null }))).subscribe(params => {this.id = params['id']});
     this.getEquipo();
-    
-   this.getEstados();
-   this.getPropietarios();
+    this.getEstados();
+    this.getPropietarios();
   }
 
   getEquipo() 
@@ -46,21 +45,20 @@ propietarios: Propietario[] = [];
   }
 
   getEstados() 
-{
-  this.estadoService.getEstados().subscribe(data => this.estados = data);
-}
+  {
+    this.estadoService.getEstados().subscribe(data => this.estados = data);
+  }
 
-getPropietarios() 
-{
-  this.propietarioService.getPropietarios().subscribe(data => this.propietarios = data);
-}
+  getPropietarios() 
+  {
+    this.propietarioService.getPropietarios().subscribe(data => this.propietarios = data);
+  }
+
   onSubmit(estado: Equipo) 
   {
     this.equipoService.actualizarEquipo(estado, this.id).subscribe(response => {
-      console.log(response); this.router.navigate(['estados/ver'], 
-      { queryParams: { showMessage: true, message: 'Persona modificada con exito.' } });},
+      console.log(response); this.router.navigate(['equipo/ver'], 
+      { queryParams: { showMessage: true, message: 'Persona modificada con exito.' } }); this.router.navigate(['equipo/ver']);},
       error => {console.log(error); this.showError = true;});
-    
   }
-
 }

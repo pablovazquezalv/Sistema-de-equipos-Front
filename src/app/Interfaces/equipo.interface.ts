@@ -1,7 +1,8 @@
 export interface Equipo {
     id: number;
     nombre: string;
-    division: string;
-    estado: string;
-    propietario: string;
+    division: number;
+    campeonatos: number;
+    estado: number;
+    propietario: number;
 }

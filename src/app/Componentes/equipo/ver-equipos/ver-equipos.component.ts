@@ -12,14 +12,12 @@ import { OnInit } from '@angular/core';
 export class VerEquiposComponent implements OnInit{
   equipos: Equipo[] = [];
 
-
   constructor(private equipoService: EquipoService,private router:Router){ }
   
   ngOnInit()
   {
     this.getEquipos();
   }
-  
 
   getEquipos() {
     this.equipoService.getEquipos().subscribe(data => this.equipos = data);
@@ -36,4 +34,11 @@ export class VerEquiposComponent implements OnInit{
     this.router.navigate(['equipo/editar',id])
   }
 
+  deleteEquipo(id: number)
+  {
+    if (confirm("¿Está seguro de eliminar la persona?"))
+    {
+      this.equipoService.eliminarEquipo(id).subscribe(response => {location.reload()}, error => console.log(error));
+    }
+  }
 }
