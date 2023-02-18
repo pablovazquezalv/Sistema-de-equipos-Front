@@ -22,6 +22,7 @@ export class VerPartidosComponent implements OnInit{
   {
     this.partidoService.getPartidos().subscribe(data => this.partidos = data);  
   }
+
   crearPartido()
   {
     this.router.navigate(['partidos/crear'])
@@ -32,4 +33,11 @@ export class VerPartidosComponent implements OnInit{
     this.router.navigate(['partidos/editar',id])
   }
 
+  deletePartido(id: number)
+  {
+    if (confirm("¿Está seguro de eliminar el estado?"))
+    {
+      this.partidoService.eliminarPartido(id).subscribe(response => {location.reload()}, error => console.log(error));
+    }
+  }
 }

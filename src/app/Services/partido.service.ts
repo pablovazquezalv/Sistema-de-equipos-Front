@@ -11,50 +11,52 @@ import { environment } from 'src/environments/environment';
 export class PartidoService {
   private partidos_url =environment.urlapi+'/partidos';
   
-
-  constructor(private http:HttpClient) 
-  {
-    
-  }
+  constructor(private http:HttpClient) { }
 
   getPartidos(): Observable<Partido[]> 
-{
-  return this.http.get<Partido[]>(this.partidos_url)
-  .pipe(
-    retry(3),
-    catchError(this.handleError)
-  );
-}
-addPartidos(partido: Partido):Observable<Partido>
-{
-  return this.http.post<Partido>(this.partidos_url,partido)
-  .pipe(
-    catchError(this.handleError)
-  );
-}
-actualizarPartido(partido: Partido, id: number)
- {
-  return this.http.put<Partido>(this.partidos_url + '/' + id, partido).pipe(retry(3));
-}
-
-mostrarUnico(id: number)
-{
-  return this.http.get<Partido>(this.partidos_url + '/mostrar/' + id).pipe(retry(3));
-}
-
-private handleError(error: HttpErrorResponse)
-{
-  if (error.status === 0) {
-    // A client-side or network error occurred. Handle it accordingly.
-    console.error('An error occurred:', error.error);
-  } else {
-    // The backend returned an unsuccessful response code.
-    // The response body may contain clues as to what went wrong.
-    console.error(
-      `Backend returned code ${error.status}, body was: `, error.error);
+  {
+    return this.http.get<Partido[]>(this.partidos_url)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
-  // Return an observable with a user-facing error message.
-  return throwError(() => new Error('Something bad happened; please try again later.'));
-}
 
+  addPartidos(partido: Partido):Observable<Partido>
+  {
+    return this.http.post<Partido>(this.partidos_url,partido)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  eliminarPartido(id: number)
+  {
+    return this.http.delete<Partido>(this.partidos_url + '/' + id).pipe(retry(3));
+  }
+
+  actualizarPartido(partido: Partido, id: number)
+  {
+    return this.http.put<Partido>(this.partidos_url + '/' + id, partido).pipe(retry(3));
+  }
+
+  mostrarUnico(id: number)
+  {
+    return this.http.get<Partido>(this.partidos_url + '/' + id).pipe(retry(3));
+  }
+
+  private handleError(error: HttpErrorResponse)
+  {
+    if (error.status === 0) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong.
+      console.error(
+        `Backend returned code ${error.status}, body was: `, error.error);
+    }
+    // Return an observable with a user-facing error message.
+    return throwError(() => new Error('Something bad happened; please try again later.'));
+  }
 }

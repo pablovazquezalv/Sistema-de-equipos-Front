@@ -2,11 +2,9 @@ import { Component,Injectable, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup,Validators, ReactiveFormsModule } from '@angular/forms';
 import { Jugador } from 'src/app/Interfaces/jugador.interface';
 import { JugadorService } from 'src/app/Services/jugador.service';
-
 import { Equipo } from 'src/app/Interfaces/equipo.interface';
 import { EquipoService } from 'src/app/Services/equipo.service';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-formulario-crear',
   templateUrl: './formulario-crear.component.html',
@@ -30,26 +28,21 @@ export class FormularioCrearComponent implements OnInit
       f_nac:  ['',Validators.required],
       equipo:  ['',Validators.required],
     })
-  }
-  
+  } 
 
   ngOnInit()
   {
     this.getEquipos();
   }
   
-
   getEquipos() {
     this.equipoService.getEquipos().subscribe(data => this.equipos = data);
     
   }
   onSubmit(values: Jugador)
   {
-    this.equipoService.addEquipo(values).subscribe(response => { this.router.navigate(['estados/ver']); });
+    this.jugadorService.addJugador(values).subscribe(response => { this.router.navigate(['jugadores/ver']); });
     
     console.log("se envio") 
   }
-
-
-
 }

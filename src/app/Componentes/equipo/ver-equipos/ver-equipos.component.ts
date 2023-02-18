@@ -41,4 +41,10 @@ export class VerEquiposComponent implements OnInit{
       this.equipoService.eliminarEquipo(id).subscribe(response => {location.reload()}, error => console.log(error));
     }
   }
+
+  //Modal
+  openModal()
+  {
+    
+  }
 }

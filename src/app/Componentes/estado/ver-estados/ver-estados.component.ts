@@ -37,7 +37,7 @@ export class VerEstadosComponent implements OnInit{
 
   deleteEstado(id: number)
   {
-    if (confirm("¿Está seguro de eliminar la persona?"))
+    if (confirm("¿Está seguro de eliminar el estado?"))
     {
       this.estadoService.eliminarEstado(id).subscribe(response => {location.reload()}, error => console.log(error));
     }

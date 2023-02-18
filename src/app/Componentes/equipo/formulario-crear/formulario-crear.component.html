@@ -3,7 +3,7 @@
   </div>
 
   <div class="basis-1/4">
-    <h3 class="text-4xl font-light text-green-700 pt-5 pl-10">Crear Equipo!</h3>
+    <h3 class="text-4xl font-light text-green-700 pt-5 pl-10">Agregar Equipo</h3>
 
     <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="pt-5 pl-10">
       <div class="mb-6"> 
@@ -35,7 +35,7 @@
       </div>  
 
       <div class="mb-6" > 
-        <label for="propietario" class="block mb-2 text-md font-light text-gray-900">Propetario </label>
+        <label for="propietario" class="block mb-2 text-md font-light text-gray-900">Propietario </label>
         <select  formControlName="propietario" id="propietario" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5" required>
           <option value="" selected>Seleccione el estado...</option>
           <option *ngFor="let propietario of propietarios" value="{{propietario.id}}">{{propietario.nombre}}</option>

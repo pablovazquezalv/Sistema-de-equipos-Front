@@ -11,16 +11,19 @@ import { OnInit } from '@angular/core';
 })
 export class VerJugadoresComponent implements OnInit{
   jugadores: Jugador[] = [];
+
   constructor(private jugadorService: JugadorService,private router:Router){ }
+
   ngOnInit()
   {
     this.getJugadores();
   }
 
   getJugadores()
-   {
+  {
     this.jugadorService.getJugadores().subscribe(data => this.jugadores = data);  
   }
+
   crearJugador()
   {
     this.router.navigate(['jugadores/crear'])
@@ -29,5 +32,13 @@ export class VerJugadoresComponent implements OnInit{
   editarJugador(id: number)
   {
     this.router.navigate(['jugadores/editar',id])
+  }
+
+  deleteJugador(id: number)
+  {
+    if (confirm("¿Está seguro de eliminar el jugador?"))
+    {
+      this.jugadorService.eliminarJugador(id).subscribe(response => {location.reload()}, error => console.log(error));
+    }
   }
 }

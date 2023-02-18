@@ -27,9 +27,9 @@ export class FormularioEditarComponent {
       sexo:  ['',Validators.required],
       f_nac:  ['',Validators.required],
       equipo:  ['',Validators.required],
-    })
-
+    });
   }
+
   ngOnInit(): void
   {
     this.route.params.pipe(catchError(error => of({ id: null }))).subscribe(params => {this.id = params['id']});
@@ -40,6 +40,7 @@ export class FormularioEditarComponent {
   getJugador() {
     this.jugadorService.mostrarUnico(this.id).subscribe(jugador=> {this.jugador = jugador; this.form.patchValue(jugador)});
   }
+
   getEquipos()
   {
     this.equipoService.getEquipos().subscribe(data => this.equipos = data);
@@ -51,6 +52,5 @@ export class FormularioEditarComponent {
       console.log(response); this.router.navigate(['jugadores/ver'], 
       { queryParams: { showMessage: true, message: 'Persona modificada con exito.' } });},
       error => {console.log(error); this.showError = true;});
-    
   }
 }

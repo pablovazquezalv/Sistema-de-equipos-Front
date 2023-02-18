@@ -17,29 +17,26 @@ export class FormularioCrearPartidoComponent implements OnInit{
   partido?:Partido;
 
   constructor(private equiposService: EquipoService,private fb: FormBuilder,private partidoService: PartidoService,private router:Router)
-{
-  this.form = this.fb.group({
-    local:  ['',Validators.required],
-    visitante:  ['',Validators.required],
-    fecha:  ['',Validators.required],
-    hora:  ['',Validators.required],
-  })
-}
-ngOnInit()
-{
-  this.getEquipos();
-}
+  {
+    this.form = this.fb.group({
+      local:  ['',Validators.required],
+      visitante:  ['',Validators.required],
+      fecha:  ['',Validators.required],
+      hora:  ['',Validators.required],
+    })
+  }
+  ngOnInit()
+  {
+    this.getEquipos();
+  }
 
+  getEquipos() 
+  {
+    this.equiposService.getEquipos().subscribe(data => this.equipos = data);
+  }
 
-getEquipos() 
-{
-  this.equiposService.getEquipos().subscribe(data => this.equipos = data);
-}
-
-onSubmit(values: Partido)
-{
-  this.partidoService.addPartidos(values).subscribe();
-  //this.router.navigate(['equipo/ver'])
-}
-
+  onSubmit(values: Partido)
+  {
+    this.partidoService.addPartidos(values).subscribe(response => {console.log(response); this.router.navigate(['/partidos/ver']);});
+  }
 }
