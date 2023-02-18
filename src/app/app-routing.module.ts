@@ -24,8 +24,11 @@ import { FormularioEditarComponent as FormularioEditarPropietario } from './Comp
 import { FormularioCrearPartidoComponent } from './Componentes/partidos/formulario-crear-partido/formulario-crear-partido.component';
 import { VerPartidosComponent } from './Componentes/partidos/ver-partidos/ver-partidos.component';
 import { FormularioEditarPartidoComponent } from './Componentes/partidos/formulario-editar-partido/formulario-editar-partido.component';
-
+//Usuarios
+import { VerUsuariosComponent } from './Componentes/Admin/ver-usuarios/ver-usuarios.component';
+import { FormularioCambiarRolComponent } from './Componentes/Admin/formulario-cambiar-rol/formulario-cambiar-rol.component';
 import { PageNotFoundComponent } from './Componentes/page-not-found/page-not-found.component';
+import { FormularioCambiarStatusComponent } from './Componentes/Admin/formulario-cambiar-status/formulario-cambiar-status.component';
 const routes: Routes = [
   //Default
   { path:'',redirectTo:'equipo/ver',pathMatch:'full'},
@@ -59,6 +62,12 @@ const routes: Routes = [
   { path:'partidos/ver',component:VerPartidosComponent},
   { path:'partidos/crear',component:FormularioCrearPartidoComponent},
   { path:'partidos/editar/:id',component:FormularioEditarPartidoComponent},
+
+  //Usuarios
+  { path:'usuarios/ver',component:VerUsuariosComponent},
+  
+  { path:'usuarios/cambiastatus/:id',component:FormularioCambiarStatusComponent},
+  { path:'usuarios/cambiarol/:id',component:FormularioCambiarRolComponent},
 
   { path:'**',component:PageNotFoundComponent}
 ];

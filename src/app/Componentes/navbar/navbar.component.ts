@@ -49,4 +49,9 @@ export class NavbarComponent {
   {
     this.router.navigate(['partidos/ver'])
   }
+  usuarios()
+  {
+    this.router.navigate(['usuarios/ver'])
+    
+  }
 }

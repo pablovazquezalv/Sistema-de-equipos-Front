@@ -1,0 +1,76 @@
+<h3 class="text-4xl font-light text-green-700 pt-5 pl-10">Ver Usuarios</h3>
+<div class="flex flex-row">
+    <div class="basis-1/4 pt-5 pl-5">
+        <hr class="mx-5">
+    </div>
+    
+    <div class="basis-1/2 pt-5 "><div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left text-blue-100 dark:text-blue-100">
+            <thead class="text-xs text-black uppercase bg-green-200 ">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        ID
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Nombre
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Email
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Phone
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Role
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Status
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Acciones
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bg-gray-600 border-b border-green-400 " *ngFor="let usuario of usuarios"  >
+                    <th scope="row" class="px-6 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">
+                        {{usuario.id}}
+                    </th>
+                    <td class="px-6 py-4">
+                        {{usuario.name}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{usuario.email}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{usuario.phone}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{usuario.role}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{usuario.status}}
+                    </td>
+                    
+                    <td class="px-6 py-4 text-center">
+                        <a  (click)="cambiaRol(usuario.id)" class="font-medium text-white hover:underline hover:text-blue-500 mr-3">Cambiar Rol</a>
+                        </td>
+                        
+                    <td class="px-6 py-4 text-center">
+                        <a  (click)="cambiaStatus(usuario.id)" class="font-medium text-white hover:underline hover:text-blue-500 mr-3">Cambiar status</a>
+                        </td>
+                    <td class="px-6 py-4 text-center">
+                        <a  class="font-medium text-white hover:underline hover:text-red-500 ml-3">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div></div>
+    <div class="basis-1/4"></div>
+</div>

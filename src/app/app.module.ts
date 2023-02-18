@@ -28,6 +28,9 @@ import { FormularioCrearPartidoComponent } from './Componentes/partidos/formular
 import { FormularioEditarPartidoComponent } from './Componentes/partidos/formulario-editar-partido/formulario-editar-partido.component';
 import { VerPartidosComponent } from './Componentes/partidos/ver-partidos/ver-partidos.component';
 import { PageNotFoundComponent } from './Componentes/page-not-found/page-not-found.component';
+import { VerUsuariosComponent } from './Componentes/Admin/ver-usuarios/ver-usuarios.component';
+import { FormularioCambiarRolComponent } from './Componentes/Admin/formulario-cambiar-rol/formulario-cambiar-rol.component';
+import { FormularioCambiarStatusComponent } from './Componentes/Admin/formulario-cambiar-status/formulario-cambiar-status.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,10 @@ import { PageNotFoundComponent } from './Componentes/page-not-found/page-not-fou
     FormularioCrearPartidoComponent,
     FormularioEditarPartidoComponent,
     VerPartidosComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    VerUsuariosComponent,
+    FormularioCambiarRolComponent,
+    FormularioCambiarStatusComponent
   ],
   imports: [
     BrowserModule,

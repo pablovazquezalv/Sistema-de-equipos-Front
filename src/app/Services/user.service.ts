@@ -12,13 +12,35 @@ export class UserService {
 
   private user_url =environment.urlapi+'/register';
   private login_url =environment.urlapi+'/login';
+
+  private admin_url = environment.urlapi+ '/admin'
   
   constructor(private http:HttpClient) { }
+
+  getUsers(): Observable<User[]> 
+  {
+    return this.http.get<User[]>(this.admin_url)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
+  actualizarEstado(user: User, id: number)
+  {
+    return this.http.put<User>(this.admin_url + '/status/' + id, user).pipe(retry(3));
+  }
+
+  actualizarRol(user: User, id: number)
+  {
+    return this.http.put<User>(this.admin_url + '/' + id, user).pipe(retry(3));
+  }
 
   addUser(user: User):Observable<User>
   {
     return this.http.post<User>(this.user_url,user).pipe(catchError(this.handleError));
   }
+
 
   login(user: User)
   {
