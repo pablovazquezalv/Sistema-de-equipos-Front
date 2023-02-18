@@ -1,7 +1,6 @@
 import { Component,Injectable, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup,Validators, ReactiveFormsModule } from '@angular/forms';
-import { Jugador } from 'src/app/Interfaces/jugador.interface';
-import { JugadorService } from 'src/app/Services/jugador.service';
+
 
 import { Router } from '@angular/router';
 import { User } from 'src/app/Interfaces/user.interface';
@@ -13,6 +12,8 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class SignUpComponent {
 
+  
+  showError: boolean = false;
   form: FormGroup;
   usuario?:User;
   
@@ -22,8 +23,10 @@ export class SignUpComponent {
       name:  ['',Validators.required],
       email:  ['',Validators.required],
       phone:  ['',Validators.required],
-      sexo:  ['',Validators.required],
-    })
+      password: ['',Validators.required],
+      password_confirmation: ['',Validators.required],
+    });
+    
   }
  
   ngOnInit()
@@ -32,17 +35,21 @@ export class SignUpComponent {
 
   onSubmit(values: User)
   {
-    this.usuarioService.addUser(values).subscribe();
+    this.usuarioService.addUser(values).subscribe(response => {
+      console.log(response); this.router.navigate(['mobile-code'], 
+      { queryParams: { showMessage: true, message: 'Persona modificada con exito.' } });},
+      error => {console.log(error); this.showError = true;});
     console.log("se envio") 
   }
   backToLogin()
   {
     this.router.navigate(['login'])
   }
-
+  
+/*
   register()
   {
     this.router.navigate(['mobile-code'])
-  }
+  }*/
 
 }

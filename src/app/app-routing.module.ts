@@ -25,6 +25,7 @@ import { FormularioCrearPartidoComponent } from './Componentes/partidos/formular
 import { VerPartidosComponent } from './Componentes/partidos/ver-partidos/ver-partidos.component';
 import { FormularioEditarPartidoComponent } from './Componentes/partidos/formulario-editar-partido/formulario-editar-partido.component';
 
+import { PageNotFoundComponent } from './Componentes/page-not-found/page-not-found.component';
 const routes: Routes = [
   //Default
   { path:'',redirectTo:'equipo/ver',pathMatch:'full'},
@@ -57,7 +58,9 @@ const routes: Routes = [
   //Partidos
   { path:'partidos/ver',component:VerPartidosComponent},
   { path:'partidos/crear',component:FormularioCrearPartidoComponent},
-  { path:'partidos/editar/:id',component:FormularioEditarPartidoComponent}
+  { path:'partidos/editar/:id',component:FormularioEditarPartidoComponent},
+
+  { path:'**',component:PageNotFoundComponent}
 ];
 
 @NgModule({

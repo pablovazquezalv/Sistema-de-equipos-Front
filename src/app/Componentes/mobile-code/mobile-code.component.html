@@ -4,10 +4,10 @@
     </div>
     <div class="basis-1/4">
     <h3 class="text-4xl font-light text-green-700 pt-5 pl-10">Ingresa el codigo de verificacion</h3>
-   <form class="pt-5 pl-10">
+   <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="pt-5 pl-10">
     <div class="mb-6"> 
       <label for="code" class="block mb-2 text-md font-light text-gray-900">Codigo</label>
-      <input type="number" id="code" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="349 494 392" required>
+      <input type="number" formControlName="code" value="1010" id="code" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5 " placeholder="349 494 392" required>
     </div>
  
     <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Verificar</button>
