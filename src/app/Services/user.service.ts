@@ -21,18 +21,29 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
 
+  login(user: User)
+  {
+      return this.http.post<User>(this.login_url,user).pipe(retry(3),catchError(this.handleError));
+  }
+
+  logout()
+  {
+    return this.http.get(this.log_out_url + '/logout').pipe(retry(3));
+  }
+
   getUsers(): Observable<User[]> 
   {
-    return this.http.get<User[]>(this.admin_url)
-    .pipe(
-      retry(3),
-      catchError(this.handleError)
-    );
+    return this.http.get<User[]>(this.admin_url).pipe(retry(3),catchError(this.handleError));
   }
   
   mostrarUnico(id: number)
   {
     return this.http.get<User>(this.user_rl + '/' + id).pipe(retry(3));
+  }
+
+  addUser(user: User):Observable<User>
+  {
+    return this.http.post<User>(this.user_url,user).pipe(catchError(this.handleError));
   }
 
   actualizarEstado(user: User, id: number)
@@ -43,22 +54,6 @@ export class UserService {
   actualizarRol(user: User, id: number)
   {
     return this.http.put<User>(this.admin_url + '/' + id, user).pipe(retry(3));
-  }
-
-  addUser(user: User):Observable<User>
-  {
-    return this.http.post<User>(this.user_url,user).pipe(catchError(this.handleError));
-  }
-
-
-  login(user: User)
-  {
-      return this.http.post<User>(this.login_url,user).pipe(retry(3),catchError(this.handleError));
-  }
-
-  logout()
-  {
-    return this.http.get(this.log_out_url + '/logout').pipe(retry(3));
   }
   
   private handleError(error: HttpErrorResponse)
