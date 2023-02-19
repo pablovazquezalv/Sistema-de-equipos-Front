@@ -30,8 +30,6 @@ export class FormularioCambiarRolComponent {
     
   }
 
-  
-
   onSubmit(user: User) 
   {
     this.userService.actualizarRol(user, this.id).subscribe(response => {

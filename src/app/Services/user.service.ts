@@ -14,8 +14,8 @@ export class UserService {
   private login_url =environment.urlapi+'/login';
 
   private log_out_url =environment.urlapi+'/';
-  private admin_url = environment.urlapi+ '/admin';
 
+  private admin_url = environment.urlapi+ '/admin';
   private user_rl =environment.urlapi+ '/user';
   
 
