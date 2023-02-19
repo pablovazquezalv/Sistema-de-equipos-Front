@@ -1,4 +1,5 @@
 export interface User {
+    user: any;
     id: number;
     name: string;
     email: string;
@@ -8,4 +9,5 @@ export interface User {
     password_confirm: string;
     phone: number;
     token: string;
+    
 }

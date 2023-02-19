@@ -29,6 +29,7 @@ import { VerUsuariosComponent } from './Componentes/Admin/ver-usuarios/ver-usuar
 import { FormularioCambiarRolComponent } from './Componentes/Admin/formulario-cambiar-rol/formulario-cambiar-rol.component';
 import { PageNotFoundComponent } from './Componentes/page-not-found/page-not-found.component';
 import { FormularioCambiarStatusComponent } from './Componentes/Admin/formulario-cambiar-status/formulario-cambiar-status.component';
+import { UsuarioGuard } from './Guards/usuario.guard';
 const routes: Routes = [
   //Default
   { path:'',redirectTo:'equipo/ver',pathMatch:'full'},
@@ -39,7 +40,7 @@ const routes: Routes = [
   { path:'mobile-code',component:MobileCodeComponent},
 
   //Equipo
-  { path:'equipo/ver',component:VerEquiposComponent},
+  { path:'equipo/ver',component:VerEquiposComponent,title:"Hola"},
   { path:'equipo/crear',component:FormularioCrearComponent},
   { path:'equipo/editar/:id',component:FormularioEditarComponent},
 

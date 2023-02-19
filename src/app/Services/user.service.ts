@@ -13,8 +13,12 @@ export class UserService {
   private user_url =environment.urlapi+'/register';
   private login_url =environment.urlapi+'/login';
 
-  private admin_url = environment.urlapi+ '/admin'
+  private log_out_url =environment.urlapi+'/';
+  private admin_url = environment.urlapi+ '/admin';
+
+  private user_rl =environment.urlapi+ '/user';
   
+
   constructor(private http:HttpClient) { }
 
   getUsers(): Observable<User[]> 
@@ -24,6 +28,11 @@ export class UserService {
       retry(3),
       catchError(this.handleError)
     );
+  }
+  
+  mostrarUnico(id: number)
+  {
+    return this.http.get<User>(this.user_rl + '/' + id).pipe(retry(3));
   }
 
   actualizarEstado(user: User, id: number)
@@ -44,7 +53,12 @@ export class UserService {
 
   login(user: User)
   {
-    return this.http.post<User>(this.login_url,user).pipe(retry(3),catchError(this.handleError));
+      return this.http.post<User>(this.login_url,user).pipe(retry(3),catchError(this.handleError));
+  }
+
+  logout()
+  {
+    return this.http.get(this.log_out_url + '/logout').pipe(retry(3));
   }
   
   private handleError(error: HttpErrorResponse)
