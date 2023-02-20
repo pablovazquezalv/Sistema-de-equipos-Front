@@ -5,6 +5,6 @@ export interface Jugador {
     ap_materno: string;
     sexo: string;
     f_nac: string;
+    equipo_id: number;
     equipo: string;
-    
 }

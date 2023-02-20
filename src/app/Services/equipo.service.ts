@@ -45,9 +45,10 @@ export class EquipoService
     return this.http.get<Jugador[]>(this.equipo_url + '/equipo/' + id).pipe(retry(3));
   }
 
-  administrarJugadoresEquipo(id: number)
+  agregarJugadoresEquipo(jugadores: number[], id: number)
   {
-    return this.http.get<Jugador[]>(this.equipo_url + '/administrar/' + id).pipe(retry(3));
+    const data = {jugadores: jugadores};
+    return this.http.put(this.equipo_url + '/jugadores/' + id, data).pipe(retry(3));
   }
 
   private handleError(error: HttpErrorResponse)
