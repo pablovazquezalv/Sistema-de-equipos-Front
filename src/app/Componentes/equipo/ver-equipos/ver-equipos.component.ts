@@ -24,6 +24,12 @@ export class VerEquiposComponent implements OnInit{
     
   }
 
+  isSessionActive() 
+  {
+    return !!localStorage.getItem('token');
+  }  
+
+  
   crearEquipo()
   {
     this.router.navigate(['equipo/crear'])

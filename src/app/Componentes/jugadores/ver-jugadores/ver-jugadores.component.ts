@@ -14,6 +14,8 @@ export class VerJugadoresComponent implements OnInit{
 
   constructor(private jugadorService: JugadorService,private router:Router){ }
 
+  
+  
   ngOnInit()
   {
     this.getJugadores();
