@@ -29,6 +29,16 @@ export class VerEquiposComponent implements OnInit{
     this.router.navigate(['equipo/crear'])
   }
 
+  mostrarJugadores(id: number)
+  {
+    this.router.navigate(['equipo/jugadores/',id])
+  }
+
+  administrarJugadores(id: number)
+  {
+    this.router.navigate(['equipo/administrar-jugadores/',id])
+  }
+
   editarEquipo(id: number)
   {
     this.router.navigate(['equipo/editar',id])

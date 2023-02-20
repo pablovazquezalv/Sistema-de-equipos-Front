@@ -2,7 +2,7 @@
     <div class="basis-1/4">
     </div>
     
-    <div class="basis-1/2 pt-5 "><div class="relative overflow-x-auto">
+    <div class="basis-1/2 pt-5 "><div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <h3 class="text-4xl font-light text-green-700 pt-2 pb-2 pl-4">Lista de Usuarios</h3>
         
         <hr class="mb-4 mx-4">
@@ -62,9 +62,9 @@
                     </td>
                     
                     <td class="px-6 py-4 text-center flex">
-                        <a (click)="cambiaRol(usuario.id)" class="mx-2 font-medium text-white hover:underline hover:text-blue-500 mr-3">Cambiar Rol</a>
-                        <a (click)="cambiaStatus(usuario.id)" class="mx-2 font-medium text-white hover:underline hover:text-blue-500 mr-3">Cambiar status</a>
-                        <a class="mx-2 font-medium text-white hover:underline hover:text-red-500 ml-3">Eliminar</a>
+                        <a (click)="openDialogRole(usuario.id, usuario.role)" class="mx-2 font-medium text-white hover:underline hover:text-blue-500 mr-3">Cambiar Rol</a>
+                        <a (click)="openDialogStatus(usuario.id, usuario.role)" class="mx-2 font-medium text-white hover:underline hover:text-blue-500 mr-3">Cambiar status</a>
+                        <a (click)="onDelete(usuario.id, usuario.role)" class="mx-2 font-medium text-white hover:underline hover:text-red-500 ml-3">Eliminar</a>
                     </td>
                 </tr>
             </tbody>

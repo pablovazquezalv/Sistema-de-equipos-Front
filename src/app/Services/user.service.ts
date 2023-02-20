@@ -21,7 +21,7 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
   //Gestión de cuentas
-  addUser(user: User):Observable<User>
+  addUser(user: User):Observable<User> //Register
   {
     return this.http.post<User>(this.user_url,user).pipe(catchError(this.handleError));
   }
@@ -36,17 +36,17 @@ export class UserService {
     return this.http.post(this.log_out_url, null).pipe(retry(3), catchError(this.handleError));
   }
 
-  //Funciones de usuarios
+  //Funciones de Administrador
   getUsers(): Observable<User[]> 
   {
     return this.http.get<User[]>(this.admin_url).pipe(retry(3),catchError(this.handleError));
   }
-  
-  mostrarUnico(id: number)
-  {
-    return this.http.get<User>(this.user_rl + '/' + id).pipe(retry(3));
-  }
 
+  deleteUser(id: number)
+  {
+    return this.http.delete(this.admin_url + '/' + id).pipe(retry(3));
+  }
+  
   actualizarEstado(user: User, id: number)
   {
     return this.http.put<User>(this.admin_url + '/status/' + id, user).pipe(retry(3));
@@ -54,9 +54,15 @@ export class UserService {
 
   actualizarRol(user: User, id: number)
   {
-    return this.http.put<User>(this.admin_url + '/' + id, user).pipe(retry(3));
+    return this.http.put<User>(this.admin_url + '/rol/' + id, user).pipe(retry(3));
   }
-  
+
+  //Funciones de Usuario
+  mostrarUnico(id: number)
+  {
+    return this.http.get<User>(this.user_rl + '/' + id).pipe(retry(3));
+  }
+
   private handleError(error: HttpErrorResponse)
   {
     if (error.status === 0) {

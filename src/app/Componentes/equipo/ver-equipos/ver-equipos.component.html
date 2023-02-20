@@ -28,6 +28,9 @@
                         Propetario
                     </th>
                     <th scope="col" class="px-6 py-3">
+                        Jugadores
+                    </th>
+                    <th scope="col" class="px-6 py-3">
                         Acciones
                     </th>
                 </tr>
@@ -48,11 +51,15 @@
                     <td class="px-6 py-4 text-center">
                         {{equipo.campeonatos}}
                     </td>
-                    <td class="px-6 py-4 text-center">
+                    <td class="px-6 py-4">
                         {{equipo.estado}}
                     </td>
-                    <td class="px-6 py-4 text-center">
+                    <td class="px-6 py-4">
                         {{equipo.propietario}}
+                    </td>
+                    <td class="px-6 py-4">
+                        <a (click)="mostrarJugadores(equipo.id)" class="font-medium text-white hover:underline hover:text-green-500 mr-3">Mostrar</a>
+                        <a (click)="administrarJugadores(equipo.id)" class="font-medium text-white hover:underline hover:text-blue-500 ml-3">Administrar</a>
                     </td>
                     <td class="px-6 py-4 text-center">
                         <a (click)="editarEquipo(equipo.id)" class="font-medium text-white hover:underline hover:text-blue-500 mr-3">Editar</a>

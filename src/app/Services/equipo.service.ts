@@ -4,6 +4,7 @@ import { Observable,throwError } from 'rxjs';
 import { catchError,retry } from 'rxjs/operators';
 import { Equipo } from '../Interfaces/equipo.interface';
 import { environment } from 'src/environments/environment';
+import { Jugador } from '../Interfaces/jugador.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,16 @@ export class EquipoService
   mostrarUnico(id: number)
   {
     return this.http.get<Equipo>(this.equipo_url + '/' + id).pipe(retry(3));
+  }
+
+  mostrarJugadoresEquipo(id: number)
+  {
+    return this.http.get<Jugador[]>(this.equipo_url + '/equipo/' + id).pipe(retry(3));
+  }
+
+  administrarJugadoresEquipo(id: number)
+  {
+    return this.http.get<Jugador[]>(this.equipo_url + '/administrar/' + id).pipe(retry(3));
   }
 
   private handleError(error: HttpErrorResponse)

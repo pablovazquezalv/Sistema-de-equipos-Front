@@ -5,6 +5,6 @@ export interface User {
     phone: number;
     password: string;
     password_confirm: string;
-    role: string;
-    status: string;
+    role: number;
+    status: number;
 }

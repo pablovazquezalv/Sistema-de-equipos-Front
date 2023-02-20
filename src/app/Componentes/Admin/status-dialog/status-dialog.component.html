@@ -1,0 +1,29 @@
+<div class="rounded-r-lg shadow-lg bg-green-200">
+    <div class="flex px-3 py-2">
+        <button (click)="close()" class="text-dark hover:text-red-500 font-medium rounded-lg text-sm">
+            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+        </button>
+        <div class="text-dark text-left pl-3"><b>Cambiar Rol:</b></div>
+    </div>
+
+    <div class="p-3 bg-gray-600">
+        <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+            <div class="mb-3">
+                <label class="block mb-2 text-md font-light text-white" for="name"><b>Nombre de Usuario:</b></label>
+                <input disabled class="bg-white border border-gray-300 text-gray-900 text-sm text-gray-500 rounded-lg focus:ring-blue-500 block w-full py-1 px-2" type="text" name="name" id="name" [value]="form.get('name')?.value">
+            </div>
+
+            <div>
+                <label class="block mb-2 text-md font-light text-white" for="status"><b>Status:</b></label>
+                <select class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full py-1 px-2" name="status" id="status" formControlName="status">
+                    <option value="0">Inactivo</option>
+                    <option value="1">Activo</option>
+                </select>
+            </div>
+
+            <div class="pt-3 text-end">
+                <button type="submit" [ngClass]="{ 'button-failed': apiFailed }" (animationend)="onAnimationEnd()" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 font-medium rounded-lg text-sm w-full sm:w-auto px-6 py-1.5 text-center">Cambiar Rol</button>
+            </div>
+        </form>
+    </div>
+</div>

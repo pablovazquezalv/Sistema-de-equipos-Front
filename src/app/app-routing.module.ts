@@ -8,6 +8,8 @@ import { MobileCodeComponent } from './Componentes/mobile-code/mobile-code.compo
 import { FormularioCrearComponent } from './Componentes/equipo/formulario-crear/formulario-crear.component';
 import { VerEquiposComponent } from './Componentes/equipo/ver-equipos/ver-equipos.component';
 import { FormularioEditarComponent } from './Componentes/equipo/formulario-editar/formulario-editar.component';
+import { MostrarJugadoresComponent } from './Componentes/equipo/mostrar-jugadores/mostrar-jugadores.component';
+import { AdministrarJugadoresComponent } from './Componentes/equipo/administrar-jugadores/administrar-jugadores.component';
 //Jugadores
 import { FormularioCrearComponent as FormularioJugador } from './Componentes/jugadores/formulario-crear/formulario-crear.component';
 import { VerJugadoresComponent } from './Componentes/jugadores/ver-jugadores/ver-jugadores.component';
@@ -26,9 +28,7 @@ import { VerPartidosComponent } from './Componentes/partidos/ver-partidos/ver-pa
 import { FormularioEditarPartidoComponent } from './Componentes/partidos/formulario-editar-partido/formulario-editar-partido.component';
 //Usuarios
 import { VerUsuariosComponent } from './Componentes/Admin/ver-usuarios/ver-usuarios.component';
-import { FormularioCambiarRolComponent } from './Componentes/Admin/formulario-cambiar-rol/formulario-cambiar-rol.component';
 import { PageNotFoundComponent } from './Componentes/page-not-found/page-not-found.component';
-import { FormularioCambiarStatusComponent } from './Componentes/Admin/formulario-cambiar-status/formulario-cambiar-status.component';
 import { UsuarioGuard } from './Guards/usuario.guard';
 const routes: Routes = [
   //Default
@@ -41,13 +41,13 @@ const routes: Routes = [
 
   //Usuarios
   { path:'usuarios/ver',component:VerUsuariosComponent},
-  { path:'usuarios/cambiastatus/:id',component:FormularioCambiarStatusComponent},
-  { path:'usuarios/cambiarol/:id',component:FormularioCambiarRolComponent},
 
   //Equipo
   { path:'equipo/ver',component:VerEquiposComponent},
   { path:'equipo/crear',component:FormularioCrearComponent},
   { path:'equipo/editar/:id',component:FormularioEditarComponent},
+  { path:'equipo/jugadores/:id',component:MostrarJugadoresComponent},
+  { path:'equipo/administrar-jugadores/:id',component:AdministrarJugadoresComponent},
 
   //Jugadores
   { path:'jugadores/ver',component:VerJugadoresComponent},

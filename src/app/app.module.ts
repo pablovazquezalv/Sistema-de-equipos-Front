@@ -27,10 +27,15 @@ import { FormularioEditarPartidoComponent } from './Componentes/partidos/formula
 import { VerPartidosComponent } from './Componentes/partidos/ver-partidos/ver-partidos.component';
 import { PageNotFoundComponent } from './Componentes/page-not-found/page-not-found.component';
 import { VerUsuariosComponent } from './Componentes/Admin/ver-usuarios/ver-usuarios.component';
-import { FormularioCambiarRolComponent } from './Componentes/Admin/formulario-cambiar-rol/formulario-cambiar-rol.component';
-import { FormularioCambiarStatusComponent } from './Componentes/Admin/formulario-cambiar-status/formulario-cambiar-status.component';
 
 import { TokenInterceptor } from './Interceptors/token.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { RolesDialogComponentComponent } from './Componentes/Admin/roles-dialog-component/roles-dialog-component.component';
+import { StatusDialogComponent } from './Componentes/Admin/status-dialog/status-dialog.component';
+import { MostrarJugadoresComponent } from './Componentes/equipo/mostrar-jugadores/mostrar-jugadores.component';
+import { AdministrarJugadoresComponent } from './Componentes/equipo/administrar-jugadores/administrar-jugadores.component';
+import { InfoCuentaComponent } from './Componentes/User/info-cuenta/info-cuenta.component';
 
 @NgModule({
   declarations: [
@@ -56,15 +61,20 @@ import { TokenInterceptor } from './Interceptors/token.interceptor';
     VerPartidosComponent,
     PageNotFoundComponent,
     VerUsuariosComponent,
-    FormularioCambiarRolComponent,
-    FormularioCambiarStatusComponent
+    RolesDialogComponentComponent,
+    StatusDialogComponent,
+    MostrarJugadoresComponent,
+    AdministrarJugadoresComponent,
+    InfoCuentaComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [
     {
