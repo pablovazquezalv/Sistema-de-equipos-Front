@@ -36,7 +36,7 @@ export class VerEquiposComponent implements OnInit{
 
   deleteEquipo(id: number)
   {
-    if (confirm("¿Está seguro de eliminar la persona?"))
+    if (confirm("¿Está seguro de eliminar al equipo?"))
     {
       this.equipoService.eliminarEquipo(id).subscribe(response => {location.reload()}, error => console.log(error));
     }
