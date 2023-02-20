@@ -13,24 +13,30 @@ export class UserService {
   private user_url =environment.urlapi+'/register';
   private login_url =environment.urlapi+'/login';
 
-  private log_out_url =environment.urlapi+'/';
+  private log_out_url =environment.urlapi+'/logout';
 
   private admin_url = environment.urlapi+ '/admin';
   private user_rl =environment.urlapi+ '/user';
   
 
   constructor(private http:HttpClient) { }
+  //Gestión de cuentas
+  addUser(user: User):Observable<User>
+  {
+    return this.http.post<User>(this.user_url,user).pipe(catchError(this.handleError));
+  }
 
   login(user: User)
   {
-      return this.http.post<User>(this.login_url,user).pipe(retry(3),catchError(this.handleError));
+      return this.http.post<User>(this.login_url,user).pipe(retry(3), catchError(this.handleError));
   }
 
   logout()
   {
-    return this.http.get(this.log_out_url + '/logout').pipe(retry(3));
+    return this.http.post(this.log_out_url, null).pipe(retry(3), catchError(this.handleError));
   }
 
+  //Funciones de usuarios
   getUsers(): Observable<User[]> 
   {
     return this.http.get<User[]>(this.admin_url).pipe(retry(3),catchError(this.handleError));
@@ -39,11 +45,6 @@ export class UserService {
   mostrarUnico(id: number)
   {
     return this.http.get<User>(this.user_rl + '/' + id).pipe(retry(3));
-  }
-
-  addUser(user: User):Observable<User>
-  {
-    return this.http.post<User>(this.user_url,user).pipe(catchError(this.handleError));
   }
 
   actualizarEstado(user: User, id: number)

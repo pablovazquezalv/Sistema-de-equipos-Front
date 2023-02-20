@@ -19,6 +19,11 @@ export class VerUsuariosComponent implements OnInit {
     this.getUsers();
   }
 
+  getUsers()
+  {
+    this.userService.getUsers().subscribe(data => this.usuarios = data);  
+  }
+
   cambiaStatus(id: number)
   {
     this.router.navigate(['usuarios/cambiastatus',id])
@@ -27,10 +32,5 @@ export class VerUsuariosComponent implements OnInit {
   cambiaRol(id: number)
   {
     this.router.navigate(['usuarios/cambiarol',id])
-  }
-
-  getUsers()
-  {
-    this.userService.getUsers().subscribe(data => this.usuarios = data);  
   }
 }

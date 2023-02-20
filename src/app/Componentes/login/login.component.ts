@@ -1,11 +1,8 @@
 import { Component,Injectable } from '@angular/core';
 import { FormBuilder, FormGroup , Validators} from '@angular/forms';
-import { Estado } from 'src/app/Interfaces/estado.interface';
-import { EstadoService } from 'src/app/Services/estado.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/Interfaces/user.interface';
 import { UserService } from 'src/app/Services/user.service';
-import { catchError, of } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -15,9 +12,7 @@ import { catchError, of } from 'rxjs';
 export class LoginComponent {
 
   form: FormGroup;
-  estado?:User;
-
-  
+  estado?:User;  
   id: number = 0;
 
   showError: boolean = false;
@@ -26,31 +21,25 @@ export class LoginComponent {
   constructor(private fb: FormBuilder,private userService: UserService,private router:Router,private route: ActivatedRoute)
   {
     this.form = this.fb.group({
-      email:  ['',Validators.required],
+      email:  ['', [Validators.required, Validators.email]],
       password:  ['',Validators.required],
     });  
   }
   
-  
-
   onSubmit(values: User)
   {  
-    this.userService.login(values).subscribe(response =>
+    this.userService.login(values).subscribe((response:any) =>
     {
+      localStorage.setItem('id',response.user.id);
+      localStorage.setItem('name',response.user.name);
+      localStorage.setItem('role',response.user.role);
       localStorage.setItem('token',response.token);
-      console.log(response);
-      this.id = response.user.id;
-      console.log(this.id);
-      this.getEstado();
-      this.router.navigate(['propietario/ver']);
+      this.router.navigate(['/']);
     },
-    error => {console.log(error); this.showError = true; this.apiFailed = true;});
-  }
-
-  getEstado()
-   {
-    this.userService.mostrarUnico(this.id).subscribe(response => {
-      console.log(response);
+    error => {
+      console.log(error); 
+      this.showError = true; 
+      this.apiFailed = true;
     });
   }
 

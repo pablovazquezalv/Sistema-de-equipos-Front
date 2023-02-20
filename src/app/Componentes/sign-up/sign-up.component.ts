@@ -21,11 +21,11 @@ export class SignUpComponent {
   constructor(private usuarioService: UserService,private fb: FormBuilder,private router:Router)
   {
     this.form = this.fb.group({
-      name:  ['',Validators.required],
-      email:  ['',Validators.required],
-      phone:  ['',Validators.required],
-      password: ['',Validators.required],
-      password_confirmation: ['',Validators.required],
+      name:  ['', [Validators.required, Validators.minLength(3)]],
+      email:  ['', [Validators.required, Validators.email]],
+      phone:  ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      password_confirmation: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
  
@@ -33,21 +33,21 @@ export class SignUpComponent {
 
   onSubmit(values: User)
   {
-    this.usuarioService.addUser(values).subscribe(response => {
-      console.log(response); this.router.navigate(['mobile-code'], 
-      { queryParams: { showMessage: true, message: 'Persona modificada con exito.' } });},
-      error => {console.log(error); this.showError = true; this.apiFailed = true;});
+    this.usuarioService.addUser(values).subscribe((response:any) => {
+      localStorage.setItem('url', response.url);
+      this.router.navigate(['mobile-code'], { queryParams: {showMessage: true, message: 'Persona modificada con exito.'}});
+    },
+    error => {
+      console.log(error); 
+      this.showError = true; 
+      this.apiFailed = true;
+    });
   }
 
   backToLogin()
   {
-    this.router.navigate(['login'])
+    this.router.navigate(['login']);
   }
-  
-  /*register()
-  {
-    this.router.navigate(['mobile-code'])
-  }*/
 
   onAnimationEnd(): void {
     this.apiFailed = false;

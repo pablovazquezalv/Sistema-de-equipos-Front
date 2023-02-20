@@ -10,15 +10,12 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class MobileCodeService {
-
-  private code_url =environment.urlapi+'/auth/verificarCodigo';
-
   
   constructor(private http:HttpClient) { }
 
-  addMobile(mobile: Mobile):Observable<Mobile>
+  addMobile(mobile: Mobile, url: string):Observable<Mobile>
   {
-    return this.http.post<Mobile>(this.code_url,mobile).pipe(catchError(this.handleError));
+    return this.http.post<Mobile>(url, mobile).pipe(catchError(this.handleError));
   }
 
   

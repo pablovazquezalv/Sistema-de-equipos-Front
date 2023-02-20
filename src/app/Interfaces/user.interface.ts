@@ -1,13 +1,10 @@
 export interface User {
-    user: any;
     id: number;
     name: string;
     email: string;
-    role: string;
-    password: string;
-    status: string;
-    password_confirm: string;
     phone: number;
-    token: string;
-    
+    password: string;
+    password_confirm: string;
+    role: string;
+    status: string;
 }

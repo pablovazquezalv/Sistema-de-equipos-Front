@@ -39,8 +39,13 @@ const routes: Routes = [
   { path:'sign-up',component:SignUpComponent},
   { path:'mobile-code',component:MobileCodeComponent},
 
+  //Usuarios
+  { path:'usuarios/ver',component:VerUsuariosComponent},
+  { path:'usuarios/cambiastatus/:id',component:FormularioCambiarStatusComponent},
+  { path:'usuarios/cambiarol/:id',component:FormularioCambiarRolComponent},
+
   //Equipo
-  { path:'equipo/ver',component:VerEquiposComponent,title:"Hola"},
+  { path:'equipo/ver',component:VerEquiposComponent},
   { path:'equipo/crear',component:FormularioCrearComponent},
   { path:'equipo/editar/:id',component:FormularioEditarComponent},
 
@@ -64,12 +69,7 @@ const routes: Routes = [
   { path:'partidos/crear',component:FormularioCrearPartidoComponent},
   { path:'partidos/editar/:id',component:FormularioEditarPartidoComponent},
 
-  //Usuarios
-  { path:'usuarios/ver',component:VerUsuariosComponent},
-  
-  { path:'usuarios/cambiastatus/:id',component:FormularioCambiarStatusComponent},
-  { path:'usuarios/cambiarol/:id',component:FormularioCambiarRolComponent},
-
+  //404
   { path:'**',component:PageNotFoundComponent}
 ];
 
