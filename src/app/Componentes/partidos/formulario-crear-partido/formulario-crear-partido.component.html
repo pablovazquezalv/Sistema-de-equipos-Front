@@ -60,7 +60,7 @@
       <!--Hora-->
       <div class="mb-6"> 
         <label for="time" class="block mb-2 text-md font-light text-gray-900">Hora del Partido</label>
-        <input type="time" [ngClass]="{'border border-2 border-red-400': form.get('hora')?.invalid && form.get('hora')?.touched}" class="p-2.5 rounded-lg" id="time" formControlName="hora" name="time" min="08:00" max="20:00" required>
+        <input list="listalimitestiempo" type="time" [ngClass]="{'border border-2 border-red-400': form.get('hora')?.invalid && form.get('hora')?.touched}" class="p-2.5 rounded-lg" step="1" id="time" formControlName="hora" name="time"  required>
 
         <!--Alert-->
         <div *ngIf="form.get('hora')?.invalid && form.get('hora')?.touched" class="flex p-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 mt-3" role="alert">
@@ -76,3 +76,20 @@
     </form>  
   </div>
 </div>
+<datalist id="listalimitestiempo">
+
+<option value="08:00">
+<option value="9:10">
+<option value="11:20">
+<option value="12:10">
+<option value="13:00">  
+<option value="14:40">     
+<option value="15:30">   
+<option value="16:10">  
+<option value="17:20">    
+<option value="18:10">  
+<option value="19:20">
+<option value="20:10">
+<option value="21:20">    
+<option value="22:10">
+</datalist>
