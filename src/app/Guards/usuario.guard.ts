@@ -16,19 +16,18 @@ export class UsuarioGuard implements CanActivate {
   }
 
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot):
+  canActivate(route: ActivatedRouteSnapshot,state: RouterStateSnapshot):
   Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const token = localStorage.getItem('token')
     if (token)
     {
-      this.id =1;
       return true; 
     }else{
-    alert("tu no tienes permiso");
+    alert("Tienes que iniciar sesion!"); 
+    this.router.navigate(['/login']);
     return false;
     }
+    
     
     
     

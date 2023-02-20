@@ -15,6 +15,14 @@ export class NavbarComponent {
 
   ngOnInit() { }
   
+  isSessionActive() 
+  {
+    return !!localStorage.getItem('token');
+  }  
+
+  
+  
+
   backToLogin()
   {
     this.router.navigate(['login']);
@@ -31,7 +39,7 @@ export class NavbarComponent {
     {
       this.userService.logout().subscribe(response => {
         localStorage.clear();
-        this.router.navigate(['/']);
+        this.router.navigate(['/login']);
       },
       error => {
         console.log(error);

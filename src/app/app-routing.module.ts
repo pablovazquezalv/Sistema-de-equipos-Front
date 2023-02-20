@@ -40,34 +40,34 @@ const routes: Routes = [
   { path:'mobile-code',component:MobileCodeComponent},
 
   //Usuarios
-  { path:'usuarios/ver',component:VerUsuariosComponent},
+  { path:'usuarios/ver',component:VerUsuariosComponent,title:"Usuarios Ver ",canActivate:[UsuarioGuard]},
 
   //Equipo
-  { path:'equipo/ver',component:VerEquiposComponent},
-  { path:'equipo/crear',component:FormularioCrearComponent},
-  { path:'equipo/editar/:id',component:FormularioEditarComponent},
-  { path:'equipo/jugadores/:id',component:MostrarJugadoresComponent},
-  { path:'equipo/administrar-jugadores/:id',component:AdministrarJugadoresComponent},
+  { path:'equipo/ver',component:VerEquiposComponent,title:"Equipos",canActivate:[UsuarioGuard]},
+  { path:'equipo/crear',component:FormularioCrearComponent,title:"Equipos Crear",canActivate:[UsuarioGuard]},
+  { path:'equipo/editar/:id',component:FormularioEditarComponent,title:"Equipos Editar",canActivate:[UsuarioGuard]},
+  { path:'equipo/jugadores/:id',component:MostrarJugadoresComponent,title:"Equipos Crear",canActivate:[UsuarioGuard]},
+  { path:'equipo/administrar-jugadores/:id',component:AdministrarJugadoresComponent,title:"Administrar Jugadores",canActivate:[UsuarioGuard]},
 
   //Jugadores
-  { path:'jugadores/ver',component:VerJugadoresComponent},
-  { path:'jugadores/crear',component:FormularioJugador},
-  { path:'jugadores/editar/:id',component:FormularioEditarJugador},
+  { path:'jugadores/ver',component:VerJugadoresComponent,title:"Jugadores Ver",canActivate:[UsuarioGuard]},
+  { path:'jugadores/crear',component:FormularioJugador,title:"Jugadores Crear",canActivate:[UsuarioGuard]},
+  { path:'jugadores/editar/:id',component:FormularioEditarJugador,title:"Jugadores Editar",canActivate:[UsuarioGuard]},
 
   //Estados
-  { path:'estados/ver',component:VerEstadosComponent},
-  { path:'estados/crear',component:FormularioEstado},
-  { path:'estados/editar/:id',component:FormularioEditarEstado},
+  { path:'estados/ver',component:VerEstadosComponent,title:"Estado Ver",canActivate:[UsuarioGuard]},
+  { path:'estados/crear',component:FormularioEstado,title:"Estado Crear ",canActivate:[UsuarioGuard]},
+  { path:'estados/editar/:id',component:FormularioEditarEstado,title:"Estado Editar ",canActivate:[UsuarioGuard]},
 
   //Propietarios
-  { path:'propietario/ver',component:VerPropietariosComponent},
-  { path:'propietario/crear',component:FormularioPropietario},
-  { path:'propietario/editar/:id',component:FormularioEditarPropietario},
+  { path:'propietario/ver',component:VerPropietariosComponent,title:"Propietario Ver ",canActivate:[UsuarioGuard]},
+  { path:'propietario/crear',component:FormularioPropietario,title:"Propietario Crear ",canActivate:[UsuarioGuard]},
+  { path:'propietario/editar/:id',component:FormularioEditarPropietario,title:"Propietario Editar ",canActivate:[UsuarioGuard]},
 
   //Partidos
-  { path:'partidos/ver',component:VerPartidosComponent},
-  { path:'partidos/crear',component:FormularioCrearPartidoComponent},
-  { path:'partidos/editar/:id',component:FormularioEditarPartidoComponent},
+  { path:'partidos/ver',component:VerPartidosComponent,title:"Partidos Ver ",canActivate:[UsuarioGuard]},
+  { path:'partidos/crear',component:FormularioCrearPartidoComponent,title:"Partidos Ver ",canActivate:[UsuarioGuard]},
+  { path:'partidos/editar/:id',component:FormularioEditarPartidoComponent,title:"Partidos Editar ",canActivate:[UsuarioGuard]},
 
   //404
   { path:'**',component:PageNotFoundComponent}
