@@ -12,60 +12,88 @@ export class UserService {
 
   private user_url =environment.urlapi+'/register';
   private login_url =environment.urlapi+'/login';
-
   private log_out_url =environment.urlapi+'/logout';
 
   private admin_url = environment.urlapi+ '/admin';
   private user_rl =environment.urlapi+ '/user';
   
-
   constructor(private http:HttpClient) { }
   //Gestión de cuentas
   addUser(user: User):Observable<User> //Register
   {
-    return this.http.post<User>(this.user_url,user).pipe(catchError(this.handleError));
+    return this.http.post<User>(this.user_url, user)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
   login(user: User)
   {
-      return this.http.post<User>(this.login_url,user).pipe(retry(3), catchError(this.handleError));
+      return this.http.post<User>(this.login_url, user)
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      );
   }
 
   logout()
   {
-    return this.http.post(this.log_out_url, null).pipe(retry(3), catchError(this.handleError));
+    return this.http.post(this.log_out_url, null)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
   //Funciones de Administrador
   getUsers(): Observable<User[]> 
   {
-    return this.http.get<User[]>(this.admin_url).pipe(retry(3),catchError(this.handleError));
+    return this.http.get<User[]>(this.admin_url)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
-  deleteUser(id: number)
-  {
-    return this.http.delete(this.admin_url + '/' + id).pipe(retry(3));
-  }
-  
   actualizarEstado(user: User, id: number)
   {
-    return this.http.put<User>(this.admin_url + '/status/' + id, user).pipe(retry(3));
+    return this.http.put<User>(this.admin_url + '/status/' + id, user)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
-
+  
   actualizarRol(user: User, id: number)
   {
-    return this.http.put<User>(this.admin_url + '/rol/' + id, user).pipe(retry(3));
+    return this.http.put<User>(this.admin_url + '/rol/' + id, user)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+  
+  deleteUser(id: number)
+  {
+    return this.http.delete(this.admin_url + '/' + id)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
   //Funciones de Usuario
   mostrarUnico(id: number)
   {
-    return this.http.get<User>(this.user_rl + '/' + id).pipe(retry(3));
+    return this.http.get<User>(this.user_rl + '/' + id)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
   
- 
-  
-  
+  //Error Handling
   private handleError(error: HttpErrorResponse)
   {
     if (error.status === 0) {

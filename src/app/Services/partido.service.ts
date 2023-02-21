@@ -13,6 +13,7 @@ export class PartidoService {
   
   constructor(private http:HttpClient) { }
 
+  //CRUD
   getPartidos(): Observable<Partido[]> 
   {
     return this.http.get<Partido[]>(this.partidos_url)
@@ -24,27 +25,41 @@ export class PartidoService {
 
   addPartidos(partido: Partido):Observable<Partido>
   {
-    return this.http.post<Partido>(this.partidos_url,partido)
+    return this.http.post<Partido>(this.partidos_url, partido)
     .pipe(
+      retry(3),
       catchError(this.handleError)
     );
   }
 
   eliminarPartido(id: number)
   {
-    return this.http.delete<Partido>(this.partidos_url + '/' + id).pipe(retry(3));
+    return this.http.delete<Partido>(this.partidos_url + '/' + id)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
   actualizarPartido(partido: Partido, id: number)
   {
-    return this.http.put<Partido>(this.partidos_url + '/' + id, partido).pipe(retry(3));
+    return this.http.put<Partido>(this.partidos_url + '/' + id, partido)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
   mostrarUnico(id: number)
   {
-    return this.http.get<Partido>(this.partidos_url + '/' + id).pipe(retry(3));
+    return this.http.get<Partido>(this.partidos_url + '/' + id)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
+  //Error Handling
   private handleError(error: HttpErrorResponse)
   {
     if (error.status === 0) {

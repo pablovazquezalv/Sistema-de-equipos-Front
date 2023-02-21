@@ -15,42 +15,73 @@ export class EquipoService
   
   constructor(private http:HttpClient) { }
 
+  //CRUD
   getEquipos(): Observable<Equipo[]> 
   {
-    return this.http.get<Equipo[]>(this.equipo_url).pipe(retry(3),catchError(this.handleError));
+    return this.http.get<Equipo[]>(this.equipo_url)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
   addEquipo(equipo: Equipo):Observable<Equipo>
   {
-    return this.http.post<Equipo>(this.equipo_url,equipo).pipe(catchError(this.handleError));
+    return this.http.post<Equipo>(this.equipo_url, equipo)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
   eliminarEquipo(id: number)
   {
-    return this.http.delete<Equipo>(this.equipo_url + '/' + id).pipe(retry(3));
+    return this.http.delete<Equipo>(this.equipo_url + '/' + id)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
   actualizarEquipo(equipo: Equipo, id: number)
   {
-    return this.http.put<Equipo>(this.equipo_url + '/' + id, equipo).pipe(retry(3));
+    return this.http.put<Equipo>(this.equipo_url + '/' + id, equipo)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
   mostrarUnico(id: number)
   {
-    return this.http.get<Equipo>(this.equipo_url + '/' + id).pipe(retry(3));
+    return this.http.get<Equipo>(this.equipo_url + '/' + id)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
+  //Funciones Jugadores
   mostrarJugadoresEquipo(id: number)
   {
-    return this.http.get<Jugador[]>(this.equipo_url + '/equipo/' + id).pipe(retry(3));
+    return this.http.get<Jugador[]>(this.equipo_url + '/equipo/' + id)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
   agregarJugadoresEquipo(jugadores: number[], id: number)
   {
     const data = {jugadores: jugadores};
-    return this.http.put(this.equipo_url + '/jugadores/' + id, data).pipe(retry(3));
+    return this.http.put(this.equipo_url + '/jugadores/' + id, data)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
+  //Error Handling
   private handleError(error: HttpErrorResponse)
   {
     if (error.status === 0) {

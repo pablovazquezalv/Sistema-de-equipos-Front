@@ -13,31 +13,53 @@ export class PropietarioService {
   
   constructor(private http:HttpClient) { }
 
+  //CRUD
   getPropietarios(): Observable<Propietario[]> 
   {
-    return this.http.get<Propietario[]>(this.propietario_url).pipe(retry(3),catchError(this.handleError));
+    return this.http.get<Propietario[]>(this.propietario_url)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
   addPropietario(propietario: Propietario):Observable<Propietario>
   {
-    return this.http.post<Propietario>(this.propietario_url,propietario).pipe(catchError(this.handleError));
+    return this.http.post<Propietario>(this.propietario_url, propietario)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
   eliminarPropietario(id: number)
   {
-    return this.http.delete<Propietario>(this.propietario_url + '/' + id).pipe(retry(3));
+    return this.http.delete<Propietario>(this.propietario_url + '/' + id)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
   actualizarPropietario(propietario: Propietario, id: number)
   {
-    return this.http.put<Propietario>(this.propietario_url + '/' + id, propietario).pipe(retry(3));
+    return this.http.put<Propietario>(this.propietario_url + '/' + id, propietario)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
   mostrarUnico(id: number)
   {
-    return this.http.get<Propietario>(this.propietario_url + '/' + id).pipe(retry(3));
+    return this.http.get<Propietario>(this.propietario_url + '/' + id)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
+  //Error handling
   private handleError(error: HttpErrorResponse)
   {
     if (error.status === 0) {

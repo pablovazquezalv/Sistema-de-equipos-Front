@@ -13,12 +13,17 @@ export class MobileCodeService {
   
   constructor(private http:HttpClient) { }
 
+  //Verificar Codigo
   addMobile(mobile: Mobile, url: string):Observable<Mobile>
   {
-    return this.http.post<Mobile>(url, mobile).pipe(catchError(this.handleError));
+    return this.http.post<Mobile>(url, mobile)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
-  
+  //Error Handling
   private handleError(error: HttpErrorResponse)
   {
     if (error.status === 0) {

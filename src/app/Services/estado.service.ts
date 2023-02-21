@@ -14,6 +14,7 @@ export class EstadoService {
   
   constructor(private http:HttpClient) { }
 
+  //CRUD
   getEstados(): Observable<Estado[]> 
   {
     return this.http.get<Estado[]>(this.estados_url)
@@ -25,24 +26,41 @@ export class EstadoService {
 
   addEstado(estado: Estado):Observable<Estado>
   {
-    return this.http.post<Estado>(this.estados_url,estado).pipe(retry(3), catchError(this.handleError));
+    return this.http.post<Estado>(this.estados_url, estado)
+    .pipe(
+      retry(3), 
+      catchError(this.handleError)
+    );
   }
 
   eliminarEstado(id: number)
   {
-    return this.http.delete<Estado>(this.estados_url + '/' + id).pipe(retry(3));
+    return this.http.delete<Estado>(this.estados_url + '/' + id)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
   actualizarEstado(estado: Estado, id: number)
   {
-    return this.http.put<Estado>(this.estados_url + '/' + id, estado).pipe(retry(3));
+    return this.http.put<Estado>(this.estados_url + '/' + id, estado)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
   mostrarUnico(id: number)
   {
-    return this.http.get<Estado>(this.estados_url + '/' + id).pipe(retry(3));
+    return this.http.get<Estado>(this.estados_url + '/' + id)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
+  //Error Handling
   private handleError(error: HttpErrorResponse)
   {
     if (error.status === 0) {

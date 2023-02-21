@@ -14,6 +14,7 @@ export class JugadorService {
 
   constructor(private http:HttpClient) { }
 
+  //CRUD
   getJugadores(): Observable<Jugador[]> 
   {
     return this.http.get<Jugador[]>(this.jugadores_url)
@@ -25,27 +26,41 @@ export class JugadorService {
 
   addJugador(jugador: Jugador):Observable<Jugador>
   {
-    return this.http.post<Jugador>(this.jugadores_url,jugador)
+    return this.http.post<Jugador>(this.jugadores_url, jugador)
     .pipe(
+      retry(3),
       catchError(this.handleError)
     );
   }
 
   eliminarJugador(id: number)
   {
-    return this.http.delete<Jugador>(this.jugadores_url + '/' + id).pipe(retry(3));
+    return this.http.delete<Jugador>(this.jugadores_url + '/' + id)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
   actualizarJugador(jugador: Jugador, id: number)
   {
-    return this.http.put<Jugador>(this.jugadores_url + '/' + id, jugador).pipe(retry(3));
+    return this.http.put<Jugador>(this.jugadores_url + '/' + id, jugador)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
   mostrarUnico(id: number)
   {
-    return this.http.get<Jugador>(this.jugadores_url + '/' + id).pipe(retry(3));
+    return this.http.get<Jugador>(this.jugadores_url + '/' + id)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 
+  //Error Handling
   private handleError(error: HttpErrorResponse)
   {
     if (error.status === 0) {

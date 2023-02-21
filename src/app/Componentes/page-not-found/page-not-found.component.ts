@@ -8,19 +8,10 @@ import { Router } from '@angular/router';
 })
 export class PageNotFoundComponent {
 
-  constructor(private router:Router)
-  {
-  
-  }
-  
-  ngOnInit()
-  {
-  
-  }
+  constructor(private router:Router) { }
   
   volverInicio()
   {
-    this.router.navigate(['equipo/ver'])
+    this.router.navigate(['/'])
   }
-
 }

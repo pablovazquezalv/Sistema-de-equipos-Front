@@ -1,7 +1,7 @@
 export interface Partido {
     id: number;
-    local: string;
-    visitante: string;
+    local: number;
+    visitante: number;
     fecha: string;
     hora: string;
 }
