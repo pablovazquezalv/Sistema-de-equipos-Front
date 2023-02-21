@@ -15,21 +15,37 @@ export class RolGuardGuard implements CanActivate {
 
   }
 
-  canActivate(route: ActivatedRouteSnapshot,state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
-    this.userService.mostrarUnico(this.id).subscribe(user => {
-      console.log(user)});
-    
-    if (localStorage.getItem('role') == '2')
+  canActivate(route: ActivatedRouteSnapshot,state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree 
+  {
+    const id = localStorage.getItem('id')
+    let roles = 0;
+    if (id)
     {
-      return true; 
-    }
-    else
-    {
-      alert("no estas autorizado!"); 
-      this.router.navigate(['/equipo/ver']);
+      const idNumber = parseInt(id, 10); 
+      this.userService.mostrarUnico(idNumber).subscribe(user => 
+      {
+        console.log(user); //datos del usuario
+        roles = user.role; 
+        console.log("soy user_role dentro: " + roles); 
+        //el valor del rol
+        
+      });
+      console.log("soy user_role afuera: " + roles);
+      const expectedRole =  route.data['expectedRole'];
+      console.log(expectedRole)
+      if (roles === expectedRole) 
+      {
+        return true;
+      } else
+      {
+       alert("No Tienes Autorizacion"); 
+       this.router.navigate(['/']);
+      }
+    } 
+    else{
+      alert("No tienes id "); 
+      this.router.navigate(['/login']);
       return false;
     } 
-  }
+}}
   
-}

@@ -33,13 +33,19 @@ export class VerEquiposComponent implements OnInit{
   
   ngOnInit(): void
   {
-   this.id = this.sharedService.getId();
-   console.log(this.id);
-    
-    /*this.userService.mostrarUnico(this.id).subscribe((data) => {
-      this.usuario = data;
-      console.log(this.usuario);
-    });*/
+    const id = localStorage.getItem('id')
+    if (id)
+    {
+      const idNumber = parseInt(id, 10); // Parseo a número entero con base 10
+        this.userService.mostrarUnico(idNumber).subscribe(user => {
+        console.log(user);
+        const user_role = user.role; // Obtener el valor del campo role del objeto de usuario
+        console.log("soy user_role dentro: " + user_role);
+        this.id = user_role;
+        // Actualizar el valor del ID del usuario en el servicio compartido
+      });
+       
+    }
     this.getEquipos();
   }
 

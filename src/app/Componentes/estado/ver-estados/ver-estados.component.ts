@@ -19,24 +19,19 @@ export class VerEstadosComponent implements OnInit{
 
   constructor(private estadoService: EstadoService,private sharedService:SharedServiceService,private userService:UserService,private router:Router){ }
   ngOnInit(): void
-  {
-    this.id = this.sharedService.getId();
-    console.log(this.id);
-    const id = localStorage.getItem('role');
-    if (id)
-     {
-      let a= parseInt(id)
-      this.userService.mostrarUnico(a).subscribe(user =>
-        { console.log(user);
-         
-        });
-      this.sharedService.setId(Number(a));
-    }
+  { const id = localStorage.getItem('id');
     
-    this.id = this.sharedService.getId();
-    console.log(this.id);
-   /*this.userService.mostrarUnico(this.username).subscribe(user => {
-      console.log(user)});*/
+  if (id)
+    {
+      const idNumber = parseInt(id, 10); // Parseo a número entero con base 10
+        this.userService.mostrarUnico(idNumber).subscribe(user => {
+        console.log(user);
+        const user_role = user.role; // Obtener el valor del campo role del objeto de usuario
+        console.log("soy user_role dentro: " + user_role);
+        this.id = user_role;
+        // Actualizar el valor del ID del usuario en el servicio compartido
+      });
+    }
     this.getEstados();
   }
 

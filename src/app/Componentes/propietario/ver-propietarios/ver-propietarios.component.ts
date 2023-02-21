@@ -5,6 +5,7 @@ import { PropietarioService } from 'src/app/Services/propietario.service';
 import { Router } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { SharedServiceService } from 'src/app/Services/shared-service.service';
+import { UserService } from 'src/app/Services/user.service';
 
 
 @Component({
@@ -17,18 +18,25 @@ export class VerPropietariosComponent implements OnInit {
 
   propietarios: Propietario[] = [];
   id: number =0 ;
-  constructor(private sharedService: SharedServiceService,private propietarioService: PropietarioService,private router:Router){ }
+  constructor(private userService: UserService,private sharedService: SharedServiceService,private propietarioService: PropietarioService,private router:Router){ }
   
   ngOnInit()
   {
+    const id = localStorage.getItem('id');
     
-    const id = localStorage.getItem('role');
     if (id)
-     {
-      this.sharedService.setId(Number(id));
+     
+    {
+      const idNumber = parseInt(id, 10); // Parseo a número entero con base 10
+        this.userService.mostrarUnico(idNumber).subscribe(user => {
+        console.log(user);
+        const user_role = user.role; // Obtener el valor del campo role del objeto de usuario
+        console.log("soy user_role dentro: " + user_role);
+        this.id = user_role;
+        // Actualizar el valor del ID del usuario en el servicio compartido
+      });
+       
     }
-    this.id = this.sharedService.getId();
-    console.log(this.id);
     this.getPropietarios();
   }
 
