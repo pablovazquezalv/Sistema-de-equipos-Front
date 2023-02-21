@@ -41,7 +41,7 @@ const routes: Routes = [
   { path:'mobile-code',component:MobileCodeComponent},
 
   //Usuarios canActivate:[RolGuardGuard]
-  { path:'usuarios/ver',component:VerUsuariosComponent,title:"Usuarios Ver",canActivate:[RolGuardGuard],data: { expectedRole: ['2']}},
+  { path:'usuarios/ver',component:VerUsuariosComponent,title:"Usuarios Ver",canActivate:[RolGuardGuard],data: { expectedRole: ['1']}},
 
   //Equipo
   { path:'equipo/ver',component:VerEquiposComponent,title:"Equipos",canActivate:[UsuarioGuard]},

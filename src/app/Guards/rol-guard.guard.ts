@@ -3,6 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } fro
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { UserService } from '../Services/user.service';
+import { SharedServiceService } from '../Services/shared-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { UserService } from '../Services/user.service';
 export class RolGuardGuard implements CanActivate {
 
   id: number = 0;
-  constructor(private router:Router,private userService: UserService)
+  constructor(private router:Router,private userService: UserService,private sharedService: SharedServiceService)
   {
 
   }
@@ -26,14 +27,18 @@ export class RolGuardGuard implements CanActivate {
         //consumo la ruta para obtener el rol
         this.userService.mostrarUnico(idNumber).subscribe(user => {
           console.log(user); //muestro los datos
-          this.id = user.role; // Obtener el valor del campo role del objeto de usuario
-          console.log("soy user_role dentro: " + this.id);
+          this.sharedService.setId(user.role); // Obtener el valor del campo role del objeto de usuario
+          //console.log("soy user_role dentro: " + this.id);
         });
+        const rol_id=this.sharedService.getId()
+        console.log("shared")
+        console.log(this.sharedService.getId())
         const expectedRole =  route.data['expectedRole']; //expectedRole , es el arreglo de roles del path
         console.log(expectedRole)
-        console.log("soy user_role afuera: " + this.id);
         
-        if (expectedRole.includes(this.id)) 
+        //const numeroBuscado = '2';
+        //console.log(numeroBuscado)
+        if (expectedRole.includes(rol_id.toString())) 
         {
           return true;
         } else
