@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpErrorResponse } from '@angular/common/http';
-import { Observable,throwError } from 'rxjs';
+import { Observable,throwError,map } from 'rxjs';
 import { catchError,retry } from 'rxjs/operators';
 import { User } from '../Interfaces/user.interface';
 import { environment } from 'src/environments/environment';
@@ -62,7 +62,10 @@ export class UserService {
   {
     return this.http.get<User>(this.user_rl + '/' + id).pipe(retry(3));
   }
-
+  
+ 
+  
+  
   private handleError(error: HttpErrorResponse)
   {
     if (error.status === 0) {

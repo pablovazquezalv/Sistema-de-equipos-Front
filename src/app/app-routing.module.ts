@@ -30,6 +30,7 @@ import { FormularioEditarPartidoComponent } from './Componentes/partidos/formula
 import { VerUsuariosComponent } from './Componentes/Admin/ver-usuarios/ver-usuarios.component';
 import { PageNotFoundComponent } from './Componentes/page-not-found/page-not-found.component';
 import { UsuarioGuard } from './Guards/usuario.guard';
+import { RolGuardGuard } from './Guards/rol-guard.guard';
 const routes: Routes = [
   //Default
   { path:'',redirectTo:'equipo/ver',pathMatch:'full'},
@@ -39,8 +40,8 @@ const routes: Routes = [
   { path:'sign-up',component:SignUpComponent},
   { path:'mobile-code',component:MobileCodeComponent},
 
-  //Usuarios
-  { path:'usuarios/ver',component:VerUsuariosComponent,title:"Usuarios Ver ",canActivate:[UsuarioGuard]},
+  //Usuarios canActivate:[RolGuardGuard]
+  { path:'usuarios/ver',component:VerUsuariosComponent,title:"Usuarios Ver",canActivate:[RolGuardGuard]},
 
   //Equipo
   { path:'equipo/ver',component:VerEquiposComponent,title:"Equipos",canActivate:[UsuarioGuard]},

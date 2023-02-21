@@ -2,6 +2,7 @@ import { Component,Injectable } from '@angular/core';
 import { FormBuilder, FormGroup , Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/Interfaces/user.interface';
+import { SharedServiceService } from 'src/app/Services/shared-service.service';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -18,12 +19,13 @@ export class LoginComponent {
   showError: boolean = false;
   public apiFailed: boolean = false;
 
-  constructor(private fb: FormBuilder,private userService: UserService,private router:Router,private route: ActivatedRoute)
+  constructor(private fb: FormBuilder,private userService: UserService,private sharedService: SharedServiceService,private router:Router,private route: ActivatedRoute)
   {
     this.form = this.fb.group({
       email:  ['', [Validators.required, Validators.email]],
       password:  ['',Validators.required],
     });  
+    
   }
   
   onSubmit(values: User)
@@ -34,6 +36,11 @@ export class LoginComponent {
       localStorage.setItem('name',response.user.name);
       localStorage.setItem('role',response.user.role);
       localStorage.setItem('token',response.token);
+      this.userService.mostrarUnico(response.user.id).subscribe(user =>
+      { console.log(user);
+       
+      });
+      this.sharedService.setId(response.user.role);  
       this.router.navigate(['/']);
     },
     error => {
@@ -43,10 +50,12 @@ export class LoginComponent {
     });
   }
 
+
   backToSignUp()
   {
     this.router.navigate(['sign-up'])
   }
+  
 
   onAnimationEnd(): void {
     this.apiFailed = false;

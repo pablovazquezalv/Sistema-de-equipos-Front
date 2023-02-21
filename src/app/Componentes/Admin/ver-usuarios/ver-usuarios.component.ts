@@ -6,6 +6,8 @@ import { OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { RolesDialogComponentComponent } from '../roles-dialog-component/roles-dialog-component.component';
 import { StatusDialogComponent } from '../status-dialog/status-dialog.component';
+
+import { SharedServiceService } from 'src/app/Services/shared-service.service';
 @Component({
   selector: 'app-ver-usuarios',
   templateUrl: './ver-usuarios.component.html',
@@ -13,13 +15,24 @@ import { StatusDialogComponent } from '../status-dialog/status-dialog.component'
 })
 export class VerUsuariosComponent implements OnInit {
 
+ 
+  id: number = 0;
   usuarios: User[] = [];
 
-  constructor(private userService: UserService,private router:Router, private dialog: MatDialog){ }
+  constructor(private userService: UserService,private sharedService: SharedServiceService,private router:Router, private dialog: MatDialog)
+  {
+    
+  }
 
   ngOnInit()
   {
-    this.getUsers();
+    
+    this.id = this.sharedService.getId();
+    console.log(this.id);
+    this.userService.mostrarUnico(this.id).subscribe(user => {
+      console.log(user)});
+  this.getUsers();  
+  
   }
 
   getUsers()
