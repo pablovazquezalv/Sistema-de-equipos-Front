@@ -18,30 +18,30 @@ export class RolGuardGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot,state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree 
   {
     const id = localStorage.getItem('id')
-    let roles = 0;
-    if (id)
-    {
-      const idNumber = parseInt(id, 10); 
-      this.userService.mostrarUnico(idNumber).subscribe(user => 
+      if (id)
       {
-        console.log(user); //datos del usuario
-        roles = user.role; 
-        console.log("soy user_role dentro: " + roles); 
-        //el valor del rol
+        const idNumber = parseInt(id, 10); 
+        this.userService.mostrarUnico(idNumber).subscribe(user => {
+          console.log(user);
+          this.id = user.role; // Obtener el valor del campo role del objeto de usuario
+          console.log("soy user_role dentro: " + this.id);
+        });
+        const expectedRole =  route.data['expectedRole'];
+        console.log(expectedRole)
+        console.log("soy user_role afuera: " + this.id);
         
-      });
-      console.log("soy user_role afuera: " + roles);
-      const expectedRole =  route.data['expectedRole'];
-      console.log(expectedRole)
-      if (roles === expectedRole) 
-      {
-        return true;
-      } else
-      {
-       alert("No Tienes Autorizacion"); 
-       this.router.navigate(['/']);
-      }
-    } 
+        if (this.id === expectedRole.valor) 
+        {
+          return true;
+        } else
+         {
+          alert("No Tienes Autorizacion"); 
+          this.router.navigate(['/']);
+
+          return false;
+        }
+         
+      } 
     else{
       alert("No tienes id "); 
       this.router.navigate(['/login']);
