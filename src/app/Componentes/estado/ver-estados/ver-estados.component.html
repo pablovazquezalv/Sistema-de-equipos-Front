@@ -1,8 +1,8 @@
 <h3 class="text-4xl font-light text-green-700 pt-5 pl-10">Estados</h3>
 <div class="flex flex-row">
-    <div class="basis-1/4 pt-5 pl-5">
+    <div class="basis-1/4 pt-5 pl-5" >
         <hr class="mx-5">
-        <button type="button" (click)="crearEstado()" class="focus:outline-none text-white bg-gray-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 ml-5 mt-4">Agregar Estado</button>
+        <button *ngIf="id != 3" type="button" (click)="crearEstado()" class="focus:outline-none text-white bg-gray-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 ml-5 mt-4">Agregar Estado</button>
     </div>
 
     <div class="basis-1/2 pt-5 "><div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -32,7 +32,7 @@
                    
                     <td class="px-6 py-4">
                         <a (click)="editarEstado(estado.id)" class="font-medium text-white hover:underline hover:text-blue-500 mr-5">Editar</a>
-                        <a (click)="deleteEstado(estado.id)" class="font-medium text-white hover:underline hover:text-red-500 ml-5">Eliminar</a>
+                        <a (click)="deleteEstado(estado.id)"  class="font-medium text-white hover:underline hover:text-red-500 ml-5">Eliminar</a>
                     </td>
                 </tr>
                 

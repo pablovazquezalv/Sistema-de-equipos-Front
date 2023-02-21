@@ -1,19 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/Services/user.service';
+import { SharedServiceService } from 'src/app/Services/shared-service.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
-
+export class NavbarComponent implements OnInit{
+  id: number = 0;
   username = localStorage.getItem('name');
   
-  constructor(private router:Router, private userService: UserService){ }
+  constructor(private router:Router, private userService: UserService,private sharedService: SharedServiceService){ 
+    
+  }
 
-  ngOnInit() { }
+  ngOnInit(): void {
+  
+    this.id = this.sharedService.getId();
+    //2
+    console.log(this.id);
+    this.getUsuario();
+    
+  }
+
+  getUsuario() 
+  {
+    
+  }
   
   isSessionActive() 
   {
