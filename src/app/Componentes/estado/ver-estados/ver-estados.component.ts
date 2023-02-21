@@ -13,14 +13,29 @@ import { UserService } from 'src/app/Services/user.service';
 export class VerEstadosComponent implements OnInit{
   id: number = 0;
   estados: Estado[] = [];
+  
+  
+
 
   constructor(private estadoService: EstadoService,private sharedService:SharedServiceService,private userService:UserService,private router:Router){ }
   ngOnInit(): void
   {
     this.id = this.sharedService.getId();
-    //2
     console.log(this.id);
-   /* this.userService.mostrarUnico(this.id).subscribe(user => {
+    const id = localStorage.getItem('role');
+    if (id)
+     {
+      let a= parseInt(id)
+      this.userService.mostrarUnico(a).subscribe(user =>
+        { console.log(user);
+         
+        });
+      this.sharedService.setId(Number(a));
+    }
+    
+    this.id = this.sharedService.getId();
+    console.log(this.id);
+   /*this.userService.mostrarUnico(this.username).subscribe(user => {
       console.log(user)});*/
     this.getEstados();
   }

@@ -20,6 +20,11 @@ export class VerJugadoresComponent implements OnInit{
   ngOnInit()
   {
     
+    const id = localStorage.getItem('role');
+    if (id)
+     {
+      this.sharedService.setId(Number(id));
+    }
     this.id = this.sharedService.getId();
     console.log(this.id);
     this.getJugadores();

@@ -21,8 +21,14 @@ export class VerEquiposComponent implements OnInit{
   constructor(private equipoService: EquipoService,private userService: UserService,private sharedService: SharedServiceService,private router:Router)
   {
 
+    const id = localStorage.getItem('role');
+    if (id)
+     {
+      this.sharedService.setId(Number(id));
+    }
     this.id = this.sharedService.getId();
     console.log(this.id);
+    
    }
   
   ngOnInit(): void

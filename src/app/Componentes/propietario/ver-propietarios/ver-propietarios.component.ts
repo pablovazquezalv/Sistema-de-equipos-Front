@@ -22,8 +22,12 @@ export class VerPropietariosComponent implements OnInit {
   ngOnInit()
   {
     
+    const id = localStorage.getItem('role');
+    if (id)
+     {
+      this.sharedService.setId(Number(id));
+    }
     this.id = this.sharedService.getId();
-    //2
     console.log(this.id);
     this.getPropietarios();
   }
