@@ -2,7 +2,7 @@
 <div class="flex flex-row">
     <div class="basis-1/4 pt-5 pl-5">
         <hr class="mx-5">
-        <button *ngIf="id != 3 && isSessionActive()" type="button"  (click)="crearEquipo()" class="focus:outline-none text-white bg-gray-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 ml-5 mt-4">Agregar Equipo</button>
+        <button *ngIf="id == 1 && isSessionActive()" type="button"  (click)="crearEquipo()" class="focus:outline-none text-white bg-gray-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 ml-5 mt-4">Agregar Equipo</button>
     </div>
 
     <div class="basis-1/2 pt-5 "><div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -30,7 +30,7 @@
                     <th scope="col" class="px-6 py-3">
                         Jugadores
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th *ngIf="id == 1 " scope="col" class="px-6 py-3">
                         Acciones
                     </th>
                 </tr>
@@ -59,10 +59,10 @@
                     </td>
                     <td class="px-6 py-4">
                         <a (click)="mostrarJugadores(equipo.id)" class="font-medium text-white hover:underline hover:text-green-500 mr-3">Mostrar</a>
-                        <a (click)="administrarJugadores(equipo.id)" class="font-medium text-white hover:underline hover:text-blue-500 ml-3">Agregar</a>
+                        <a *ngIf="id == 1 || id==2" (click)="administrarJugadores(equipo.id)" class="font-medium text-white hover:underline hover:text-blue-500 ml-3">Agregar</a>
                     </td>
-                    <td class="px-6 py-4 text-center">
-                        <a (click)="editarEquipo(equipo.id)" class="font-medium text-white hover:underline hover:text-blue-500 mr-3">Editar</a>
+                    <td *ngIf="id == 1 || id==2" class="px-6 py-4 text-center">
+                        <a  (click)="editarEquipo(equipo.id)" class="font-medium text-white hover:underline hover:text-blue-500 mr-3">Editar</a>
                         <a (click)="deleteEquipo(equipo.id)" class="font-medium text-white hover:underline hover:text-red-500 ml-3">Eliminar</a>
                     </td>
                 </tr>

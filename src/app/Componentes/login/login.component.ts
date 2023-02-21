@@ -36,10 +36,11 @@ export class LoginComponent {
       localStorage.setItem('name',response.user.name);
       localStorage.setItem('role',response.user.role);
       localStorage.setItem('token',response.token);
-      this.userService.mostrarUnico(response.user.role).subscribe(user => { console.log(user);
-      this.sharedService.setId(response.user.role);   
+      this.userService.mostrarUnico(response.user.id).subscribe(user =>
+      { console.log(user);
+       
       });
-
+      this.sharedService.setId(response.user.role);  
       this.router.navigate(['/']);
     },
     error => {

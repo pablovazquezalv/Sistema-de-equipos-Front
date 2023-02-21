@@ -3,18 +3,22 @@ import { Router } from '@angular/router';
 import { Partido } from 'src/app/Interfaces/partido.interface';
 import { PartidoService } from 'src/app/Services/partido.service';
 import { OnInit } from '@angular/core';
+import { SharedServiceService } from 'src/app/Services/shared-service.service';
 @Component({
   selector: 'app-ver-partidos',
   templateUrl: './ver-partidos.component.html',
   styleUrls: ['./ver-partidos.component.css']
 })
 export class VerPartidosComponent implements OnInit{
-
+  id :number = 0;
   partidos: Partido[] = [];
-  constructor(private partidoService: PartidoService,private router:Router){ }
+  constructor(private sharedService: SharedServiceService,private partidoService: PartidoService,private router:Router){ }
   
   ngOnInit()
   {
+    
+    this.id = this.sharedService.getId();
+    console.log(this.id);
     this.getPartidos();
   }
 

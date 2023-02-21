@@ -15,18 +15,25 @@ export class VerEquiposComponent implements OnInit{
   id: number = 0;
   equipos: Equipo[] = [];
   usuario: any;
-
-
-  constructor(private equipoService: EquipoService,private userService: UserService,private sharedService: SharedServiceService,private router:Router){ }
   
-  ngOnInit()
+
+
+  constructor(private equipoService: EquipoService,private userService: UserService,private sharedService: SharedServiceService,private router:Router)
   {
+
     this.id = this.sharedService.getId();
     console.log(this.id);
-    this.userService.mostrarUnico(this.id).subscribe((data) => {
+   }
+  
+  ngOnInit(): void
+  {
+   this.id = this.sharedService.getId();
+   console.log(this.id);
+    
+    /*this.userService.mostrarUnico(this.id).subscribe((data) => {
       this.usuario = data;
       console.log(this.usuario);
-    });
+    });*/
     this.getEquipos();
   }
 

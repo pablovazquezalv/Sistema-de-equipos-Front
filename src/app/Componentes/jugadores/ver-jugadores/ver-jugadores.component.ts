@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Jugador } from 'src/app/Interfaces/jugador.interface';
 import { JugadorService } from 'src/app/Services/jugador.service';
 import { OnInit } from '@angular/core';
+import { SharedServiceService } from 'src/app/Services/shared-service.service';
 
 @Component({
   selector: 'app-ver-jugadores',
@@ -11,13 +12,16 @@ import { OnInit } from '@angular/core';
 })
 export class VerJugadoresComponent implements OnInit{
   jugadores: Jugador[] = [];
-
-  constructor(private jugadorService: JugadorService,private router:Router){ }
+  id: number = 0;
+  constructor(private jugadorService: JugadorService,private sharedService: SharedServiceService,private router:Router){ }
 
   
   
   ngOnInit()
   {
+    
+    this.id = this.sharedService.getId();
+    console.log(this.id);
     this.getJugadores();
   }
 

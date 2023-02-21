@@ -4,6 +4,7 @@ import { Propietario } from 'src/app/Interfaces/propietario.interface';
 import { PropietarioService } from 'src/app/Services/propietario.service';
 import { Router } from '@angular/router';
 import { OnInit } from '@angular/core';
+import { SharedServiceService } from 'src/app/Services/shared-service.service';
 
 
 @Component({
@@ -15,11 +16,15 @@ import { OnInit } from '@angular/core';
 export class VerPropietariosComponent implements OnInit {
 
   propietarios: Propietario[] = [];
-
-  constructor(private propietarioService: PropietarioService,private router:Router){ }
+  id: number =0 ;
+  constructor(private sharedService: SharedServiceService,private propietarioService: PropietarioService,private router:Router){ }
   
   ngOnInit()
   {
+    
+    this.id = this.sharedService.getId();
+    //2
+    console.log(this.id);
     this.getPropietarios();
   }
 
