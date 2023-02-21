@@ -17,20 +17,23 @@ export class RolGuardGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot,state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree 
   {
+    //Obtengo el id
     const id = localStorage.getItem('id')
       if (id)
       {
+        //casteo el id
         const idNumber = parseInt(id, 10); 
+        //consumo la ruta para obtener el rol
         this.userService.mostrarUnico(idNumber).subscribe(user => {
-          console.log(user);
+          console.log(user); //muestro los datos
           this.id = user.role; // Obtener el valor del campo role del objeto de usuario
           console.log("soy user_role dentro: " + this.id);
         });
-        const expectedRole =  route.data['expectedRole'];
+        const expectedRole =  route.data['expectedRole']; //expectedRole , es el arreglo de roles del path
         console.log(expectedRole)
         console.log("soy user_role afuera: " + this.id);
         
-        if (this.id === expectedRole.valor) 
+        if (expectedRole.includes(this.id)) 
         {
           return true;
         } else
