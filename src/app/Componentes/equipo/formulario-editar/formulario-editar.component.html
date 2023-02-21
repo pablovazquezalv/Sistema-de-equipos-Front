@@ -57,7 +57,7 @@
 
       <!--Estados-->
       <div class="mb-6" > 
-        <label for="estado" class="block mb-2 text-md font-light text-gray-900">Estados </label>
+        <label for="estado" class="block mb-2 text-md font-light text-gray-900">Estado</label>
         <select  formControlName="estado" id="estado" [ngClass]="{'border border-red-400': form.get('estado')?.invalid && form.get('estado')?.touched}" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500  block w-full p-2.5" required>
           <option *ngFor="let estado of estados" value="{{estado.id}}">{{estado.nombre}}</option>
         </select>
