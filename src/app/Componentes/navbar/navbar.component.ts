@@ -12,9 +12,7 @@ export class NavbarComponent implements OnInit{
   id: number = 0;
   username = localStorage.getItem('name');
   
-  constructor(private router:Router, private userService: UserService,private sharedService: SharedServiceService){ 
-    
-  }
+  constructor(private router:Router, private userService: UserService,private sharedService: SharedServiceService) { }
 
   ngOnInit(): void {
   
@@ -32,22 +30,16 @@ export class NavbarComponent implements OnInit{
        
     }
     this.getUsuario();
-    
   }
 
-  getUsuario() 
-  {
-    
-  }
+  getUsuario() { }
   
   isSessionActive() 
   {
     return !!localStorage.getItem('token');
   }  
 
-  
-  
-
+  //Logueo
   backToLogin()
   {
     this.router.navigate(['login']);
@@ -71,6 +63,7 @@ export class NavbarComponent implements OnInit{
       });
     }
   }
+
   //CRUDS
   equipo()
   {

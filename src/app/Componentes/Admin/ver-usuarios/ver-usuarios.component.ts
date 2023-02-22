@@ -25,14 +25,12 @@ export class VerUsuariosComponent implements OnInit {
   }
 
   ngOnInit()
-  {
-    
+  { 
     this.id = this.sharedService.getId();
     console.log(this.id);
     this.userService.mostrarUnico(this.id).subscribe(user => {
-      console.log(user)});
-  this.getUsers();  
-  
+    console.log(user)});
+    this.getUsers();  
   }
 
   getUsers()

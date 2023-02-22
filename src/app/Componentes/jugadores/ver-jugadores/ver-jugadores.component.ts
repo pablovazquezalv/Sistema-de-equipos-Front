@@ -15,8 +15,6 @@ export class VerJugadoresComponent implements OnInit{
   jugadores: Jugador[] = [];
   id: number = 0;
   constructor(private userService: UserService,private jugadorService: JugadorService,private sharedService: SharedServiceService,private router:Router){ }
-
-  
   
   ngOnInit()
   {
@@ -36,6 +34,11 @@ export class VerJugadoresComponent implements OnInit{
     }
     this.getJugadores();
   }
+
+  isSessionActive() 
+  {
+    return !!localStorage.getItem('token');
+  }  
 
   getJugadores()
   {

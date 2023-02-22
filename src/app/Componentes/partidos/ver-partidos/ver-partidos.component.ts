@@ -36,6 +36,11 @@ export class VerPartidosComponent implements OnInit{
     this.getPartidos();
   }
 
+  isSessionActive() 
+  {
+    return !!localStorage.getItem('token');
+  }  
+
   getPartidos() 
   {
     this.partidoService.getPartidos().subscribe(data => this.partidos = data);  

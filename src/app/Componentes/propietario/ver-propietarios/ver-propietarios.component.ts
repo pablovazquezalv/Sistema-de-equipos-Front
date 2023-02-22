@@ -40,6 +40,11 @@ export class VerPropietariosComponent implements OnInit {
     this.getPropietarios();
   }
 
+  isSessionActive() 
+  {
+    return !!localStorage.getItem('token');
+  }  
+
   getPropietarios() {
     this.propietarioService.getPropietarios().subscribe(data => this.propietarios = data);
   }

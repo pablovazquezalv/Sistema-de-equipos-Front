@@ -14,8 +14,6 @@ export class VerEstadosComponent implements OnInit{
   id: number = 0;
   estados: Estado[] = [];
   
-  
-
 
   constructor(private estadoService: EstadoService,private sharedService:SharedServiceService,private userService:UserService,private router:Router){ }
   ngOnInit(): void
@@ -34,6 +32,11 @@ export class VerEstadosComponent implements OnInit{
     }
     this.getEstados();
   }
+
+  isSessionActive() 
+  {
+    return !!localStorage.getItem('token');
+  }  
 
   getEstados() 
   {

@@ -46,6 +46,18 @@ export class UserService {
     );
   }
 
+  //Revisar Token Existente
+  revisarToken()
+  {
+    const token = localStorage.getItem('token');
+
+    return this.http.post(environment.urlapi + "/auth/verificarToken", token)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
   //Funciones de Administrador
   getUsers(): Observable<User[]> 
   {

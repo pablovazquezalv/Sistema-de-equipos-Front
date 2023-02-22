@@ -32,7 +32,8 @@ export class StatusDialogComponent implements OnInit {
   {
     this.userService.actualizarEstado(user, this.data.id).subscribe(response => {
       this.dialogRef.close();
-      location.reload();
+      //location.reload();
+      this.router.navigate(['/']);
     },
     error => {
       this.apiFailed = true;
