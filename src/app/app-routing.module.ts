@@ -31,6 +31,7 @@ import { VerUsuariosComponent } from './Componentes/Admin/ver-usuarios/ver-usuar
 import { PageNotFoundComponent } from './Componentes/page-not-found/page-not-found.component';
 import { UsuarioGuard } from './Guards/usuario.guard';
 import { RolGuardGuard } from './Guards/rol-guard.guard';
+import { EliminarJugadoresEquipoComponent } from './Componentes/equipo/eliminar-jugadores-equipo/eliminar-jugadores-equipo.component';
 const routes: Routes = [
   //Default
   { path:'',redirectTo:'equipo/ver',pathMatch:'full'},
@@ -41,7 +42,7 @@ const routes: Routes = [
   { path:'mobile-code',component:MobileCodeComponent},
 
   //Usuarios canActivate:[RolGuardGuard]
-  { path:'usuarios/ver',component:VerUsuariosComponent,title:"Usuarios Ver",canActivate:[RolGuardGuard],data: { expectedRole: ['1','2']}},
+  { path:'usuarios/ver',component:VerUsuariosComponent,title:"Usuarios Ver",canActivate:[UsuarioGuard, RolGuardGuard],data: { expectedRole: ['1']}},
 
   //Equipo
   { path:'equipo/ver',component:VerEquiposComponent,title:"Equipos",canActivate:[UsuarioGuard]},
@@ -49,6 +50,7 @@ const routes: Routes = [
   { path:'equipo/editar/:id',component:FormularioEditarComponent,title:"Equipos Editar",canActivate:[UsuarioGuard]},
   { path:'equipo/jugadores/:id',component:MostrarJugadoresComponent,title:"Equipos Crear",canActivate:[UsuarioGuard]},
   { path:'equipo/administrar-jugadores/:id',component:AdministrarJugadoresComponent,title:"Administrar Jugadores",canActivate:[UsuarioGuard]},
+  { path:'equipo/eliminar-jugadores/:id',component:EliminarJugadoresEquipoComponent,title:"Administrar Jugadores",canActivate:[UsuarioGuard]},
 
   //Jugadores
   { path:'jugadores/ver',component:VerJugadoresComponent,title:"Jugadores Ver",canActivate:[UsuarioGuard]},

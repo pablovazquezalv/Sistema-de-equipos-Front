@@ -7,12 +7,11 @@ import { EquipoService } from 'src/app/Services/equipo.service';
 import { JugadorService } from 'src/app/Services/jugador.service';
 
 @Component({
-  selector: 'app-administrar-jugadores',
-  templateUrl: './administrar-jugadores.component.html',
-  styleUrls: ['./administrar-jugadores.component.css']
+  selector: 'app-eliminar-jugadores-equipo',
+  templateUrl: './eliminar-jugadores-equipo.component.html',
+  styleUrls: ['./eliminar-jugadores-equipo.component.css']
 })
-export class AdministrarJugadoresComponent implements OnInit {
-
+export class EliminarJugadoresEquipoComponent implements OnInit {
   form: FormGroup;
   jugadores: Jugador[] = [];
   jugadoresSeleccionados: number[] = [];
@@ -53,7 +52,7 @@ export class AdministrarJugadoresComponent implements OnInit {
 
   onSubmit()
   {
-    this.equipoService.agregarJugadoresEquipo(this.jugadoresSeleccionados, this.id).subscribe(data => {
+    this.equipoService.eliminarJugadoresEquipos(this.jugadoresSeleccionados, this.id).subscribe(data => {
       console.log(data); 
       this.router.navigate(['/equipo/ver']);
     }, error => {

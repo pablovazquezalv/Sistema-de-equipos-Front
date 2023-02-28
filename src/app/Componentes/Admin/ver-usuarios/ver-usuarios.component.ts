@@ -15,37 +15,31 @@ import { SharedServiceService } from 'src/app/Services/shared-service.service';
 })
 export class VerUsuariosComponent implements OnInit {
 
- 
   id: number = 0;
   usuarios: User[] = [];
 
-  constructor(private userService: UserService,private sharedService: SharedServiceService,private router:Router, private dialog: MatDialog)
-  {
-    
-  }
+  constructor(private userService: UserService,private sharedService: SharedServiceService,private router:Router, private dialog: MatDialog) { }
 
   ngOnInit()
   { 
-    this.id = this.sharedService.getId();
-    console.log(this.id);
-    this.userService.mostrarUnico(this.id).subscribe(user => {
-    console.log(user)});
-    this.getUsers();  
+    this.userService.revisarToken()
+    .subscribe(
+      (data: any) => 
+      {
+        this.id = data.id;
+        console.log(this.id);
+      },
+      error => 
+      {
+        console.log(error);
+      }
+    );
+    this.getUsers();   
   }
 
   getUsers()
   {
     this.userService.getUsers().subscribe(data => this.usuarios = data);  
-  }
-
-  cambiaStatus(id: number)
-  {
-    this.router.navigate(['usuarios/cambiastatus',id])
-  }
-
-  cambiaRol(id: number)
-  {
-    this.router.navigate(['usuarios/cambiarol',id])
   }
 
   openDialogRole(id: number, role: number) 

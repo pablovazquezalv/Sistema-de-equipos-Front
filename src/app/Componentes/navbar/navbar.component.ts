@@ -15,20 +15,10 @@ export class NavbarComponent implements OnInit{
   constructor(private router:Router, private userService: UserService,private sharedService: SharedServiceService) { }
 
   ngOnInit(): void {
-  
-    const id = localStorage.getItem('id')
-    if (id)
-    {
-      const idNumber = parseInt(id, 10); // Parseo a número entero con base 10
-        this.userService.mostrarUnico(idNumber).subscribe(user => {
-        console.log(user);
-        const user_role = user.role; // Obtener el valor del campo role del objeto de usuario
-        console.log("soy user_role dentro: " + user_role);
-        this.id = user_role;
-        // Actualizar el valor del ID del usuario en el servicio compartido
-      });
-       
-    }
+    this.userService.revisarToken().subscribe((data:any) => {
+      this.id = data.role;
+    }, error => console.log(error));
+    
     this.getUsuario();
   }
 

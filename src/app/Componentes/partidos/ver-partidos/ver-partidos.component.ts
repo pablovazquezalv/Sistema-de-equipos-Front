@@ -17,22 +17,10 @@ export class VerPartidosComponent implements OnInit{
   
   ngOnInit()
   {
-    const id = localStorage.getItem('id');
+    this.userService.revisarToken().subscribe((data:any) => {
+      this.id = data.role;
+    }, error => console.log(error));
     
-    
-    if (id)
-    
-    {
-      const idNumber = parseInt(id, 10); // Parseo a número entero con base 10
-        this.userService.mostrarUnico(idNumber).subscribe(user => {
-        console.log(user);
-        const user_role = user.role; // Obtener el valor del campo role del objeto de usuario
-        console.log("soy user_role dentro: " + user_role);
-        this.id = user_role;
-        // Actualizar el valor del ID del usuario en el servicio compartido
-      });
-       
-    }
     this.getPartidos();
   }
 

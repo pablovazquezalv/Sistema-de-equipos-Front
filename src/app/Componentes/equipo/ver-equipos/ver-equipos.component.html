@@ -59,7 +59,8 @@
                     </td>
                     <td class="px-6 py-4">
                         <a (click)="mostrarJugadores(equipo.id)" class="font-medium text-white hover:underline hover:text-green-500 mr-3">Mostrar</a>
-                        <a *ngIf="id == 1 || id==2" (click)="administrarJugadores(equipo.id)" class="font-medium text-white hover:underline hover:text-blue-500 ml-3">Agregar</a>
+                        <a *ngIf="id == 1 || id==2" (click)="administrarJugadores(equipo.id)" class="font-medium text-white hover:underline hover:text-blue-500 ml-3 mr-3">Agregar</a>
+                        <a *ngIf="id == 1 || id==2" (click)="eliminarJugadores(equipo.id)" hidden class="font-medium text-white hover:underline hover:text-red-500 ml-3">Eliminar</a>
                     </td>
                     <td *ngIf="id == 1 || id==2" class="px-6 py-4 text-center">
                         <a  (click)="editarEquipo(equipo.id)" class="font-medium text-white hover:underline hover:text-blue-500 mr-3">Editar</a>

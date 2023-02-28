@@ -35,7 +35,7 @@ import { RolesDialogComponentComponent } from './Componentes/Admin/roles-dialog-
 import { StatusDialogComponent } from './Componentes/Admin/status-dialog/status-dialog.component';
 import { MostrarJugadoresComponent } from './Componentes/equipo/mostrar-jugadores/mostrar-jugadores.component';
 import { AdministrarJugadoresComponent } from './Componentes/equipo/administrar-jugadores/administrar-jugadores.component';
-import { InfoCuentaComponent } from './Componentes/User/info-cuenta/info-cuenta.component';
+import { EliminarJugadoresEquipoComponent } from './Componentes/equipo/eliminar-jugadores-equipo/eliminar-jugadores-equipo.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +65,7 @@ import { InfoCuentaComponent } from './Componentes/User/info-cuenta/info-cuenta.
     StatusDialogComponent,
     MostrarJugadoresComponent,
     AdministrarJugadoresComponent,
-    InfoCuentaComponent,
+    EliminarJugadoresEquipoComponent,
   ],
   imports: [
     BrowserModule,

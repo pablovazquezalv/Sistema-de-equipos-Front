@@ -10,58 +10,45 @@ import { SharedServiceService } from '../Services/shared-service.service';
 })
 export class RolGuardGuard implements CanActivate {
 
-  id: number = 0;
+  id?: number;
+  rol?:number;
 
   constructor(private router:Router,private userService: UserService,private sharedService: SharedServiceService) { }
 
-  canActivate(route: ActivatedRouteSnapshot,state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree 
+  async canActivate(route: ActivatedRouteSnapshot,state: RouterStateSnapshot): Promise<boolean | UrlTree> 
   {
-    const id = this.id;
+    const roles = route.data['expectedRole'];
+    let rol = this.rol;
 
-    this.userService.revisarToken()
-    .subscribe(
-      (data: any) => {
-        this.id = data;
-      },error => {
-        console.log(error);
-      }
-    );
-      
-    if(id)
+    try 
     {
-      const idNumber = id; 
-      
-      this.userService.mostrarUnico(idNumber)
-      .subscribe(user => {
-        console.log(user); //muestro los datos
-        this.sharedService.setId(user.role);
-      });
-
-      const rol_id=this.sharedService.getId()
-      console.log("shared")
-      console.log(this.sharedService.getId())
-      const expectedRole =  route.data['expectedRole']; //expectedRole , es el arreglo de roles del path
-      console.log(expectedRole)
-
-      if (expectedRole.includes(rol_id.toString())) 
+      const data: any = await this.userService.revisarToken().toPromise();
+      rol = data.role;
+  
+      if(rol)
       {
-        //this.router.navigate(['/']);
-        location.reload();
-        return true;
-      } 
-        
-      else
-      {
-        alert("No Tienes Autorizacion"); 
-        this.router.navigate(['/'], {queryParams: { returnUrl: state.url }});
+        for (let i = 0; i < roles.length; i++) 
+        {
+          if (roles[i] == rol) {
+            return true;
+          }
+        }
+
+        alert("No tienes permisos para acceder a esta pagina");
         return false;
-      }     
-    }
-
-    else
-    {
-      //alert("No tienes id "); 
-      //this.router.navigate(['/login'], {queryParams: { returnUrl: state.url }});
-      return false;
+      } 
+      
+      else 
+      {
+        return false;
+      }
     } 
-}}
+
+    catch(error) 
+    {
+      alert("No tienes permisos para acceder a esta pagina");
+      console.log(error);
+      return false;
+    }
+  }
+}

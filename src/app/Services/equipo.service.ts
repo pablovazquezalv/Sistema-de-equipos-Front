@@ -81,6 +81,16 @@ export class EquipoService
     );
   }
 
+  eliminarJugadoresEquipos(jugadores: number[], id: number)
+  {
+    const data = {jugadores: jugadores};
+    return this.http.put(this.equipo_url + '/eliminarJugadores/' + id, data)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
   //Error Handling
   private handleError(error: HttpErrorResponse)
   {

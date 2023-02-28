@@ -40,7 +40,7 @@ export class LoginComponent {
       { console.log(user);
        
       });
-      this.sharedService.setId(response.user.role);  
+      this.sharedService.setId(response.user.role);
       this.router.navigate(['/']);
     },
     error => {
