@@ -35,7 +35,7 @@ export class SignUpComponent {
   {
     this.usuarioService.addUser(values).subscribe((response:any) => {
       localStorage.setItem('url', response.url);
-      this.router.navigate(['mobile-code'], { queryParams: {showMessage: true, message: 'Persona modificada con exito.'}});
+      this.router.navigate(['mobile-code', response.id], { queryParams: {showMessage: true, message: 'Persona modificada con exito.'}});
     },
     error => {
       console.log(error); 

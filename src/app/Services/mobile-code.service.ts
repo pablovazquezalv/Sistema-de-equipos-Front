@@ -10,6 +10,8 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class MobileCodeService {
+
+  private auth_url =environment.urlapi+'/auth';
   
   constructor(private http:HttpClient) { }
 
@@ -17,6 +19,15 @@ export class MobileCodeService {
   addMobile(mobile: Mobile, url: string):Observable<Mobile>
   {
     return this.http.post<Mobile>(url, mobile)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
+  reenviarCodigo(id:number):Observable<Mobile>
+  {
+    return this.http.get<any>(this.auth_url + '/reenviarCodigo/' + id)
     .pipe(
       retry(3),
       catchError(this.handleError)

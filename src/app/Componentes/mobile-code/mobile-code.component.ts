@@ -1,6 +1,7 @@
 import { Component,Injectable, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup,Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { catchError, of } from 'rxjs';
 import { Mobile } from 'src/app/Interfaces/mobile.interface';
 import { MobileCodeService } from 'src/app/Services/mobile-code.service';
 @Component({
@@ -14,16 +15,29 @@ export class MobileCodeComponent {
   form: FormGroup;
   usuario?:Mobile;
 
+  id:number = 0;
+
   public apiFailed: boolean = false;
   
-  constructor(private mobileService: MobileCodeService,private fb: FormBuilder,private router:Router)
+  constructor(private mobileService: MobileCodeService,private fb: FormBuilder,private router:Router, private route: ActivatedRoute)
   {
     this.form = this.fb.group({
       code:  ['', Validators.required],
     });   
   }
  
-  ngOnInit() { }
+  ngOnInit() {
+    this.route.params.pipe(catchError(error => of({ id: null }))).subscribe(params => {this.id = params['id']});
+  }
+
+  reenviarCodigo()
+  {
+    this.mobileService.reenviarCodigo(this.id).subscribe((response:any) => {
+      console.log(response);
+      localStorage.setItem('url', response.url);
+      alert('Codigo reenviado con exito');
+    });
+  }
 
   onSubmit(values: Mobile, url = localStorage.getItem('url'))
   {

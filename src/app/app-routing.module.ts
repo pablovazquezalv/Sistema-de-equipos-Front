@@ -39,7 +39,7 @@ const routes: Routes = [
   //Login
   { path:'login',component:LoginComponent},
   { path:'sign-up',component:SignUpComponent},
-  { path:'mobile-code',component:MobileCodeComponent},
+  { path:'mobile-code/:id',component:MobileCodeComponent},
 
   //Usuarios canActivate:[RolGuardGuard]
   { path:'usuarios/ver',component:VerUsuariosComponent,title:"Usuarios Ver",canActivate:[UsuarioGuard, RolGuardGuard],data: { expectedRole: ['1']}},
